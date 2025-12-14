@@ -1,0 +1,41 @@
+{
+  "framework": "vllm",
+  "model_name": "mock_vllm_test",
+  "model_type": "vLLM",
+  "parameters": "N/A",
+  "input_info": {
+    "type": "text_or_sampling_params",
+    "sample_input": "{'prompts': 'The quick brown fox jumps over the lazy dog', 'params': {'max_tokens': 50, 'temperature': 0.7}}"
+  },
+  "output_info": {
+    "type": "generated_text",
+    "sample_output": "[\"Generated with ops: mock_attention_output, mock_paged_attention_output, workers: ['model_executed_with_ops: mock_attention_output, mock_paged_attention_output', 'model_executed_with_ops: mock_attent...",
+    "num_outputs": 1
+  },
+  "layers": [
+    {
+      "layer_index": 0,
+      "name": "vllm_model",
+      "type": "vLLM",
+      "parameters": "N/A",
+      "description": "vLLM language model with internal transformer architecture",
+      "components": [
+        {
+          "name": "tokenizer",
+          "type": "Tokenizer",
+          "description": "Text tokenization component"
+        },
+        {
+          "name": "model_engine",
+          "type": "ModelEngine",
+          "description": "Core model execution engine"
+        },
+        {
+          "name": "scheduler",
+          "type": "Scheduler",
+          "description": "Request scheduling component"
+        }
+      ]
+    }
+  ]
+}

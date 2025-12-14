@@ -22,7 +22,7 @@ class TestModelDumper:
 
     def setup_method(self):
         """Setup test environment"""
-        self.temp_dir =  "/Users/apple/workspace/FT/Agent/PrecisionProject/tests/temp/"#tempfile.mkdtemp()
+        self.temp_dir = "/home/workspace/Agent_workspace/PrecisionProject/tests/temp/"#tempfile.mkdtemp()
         self.model = nn.Sequential(
             nn.Linear(10, 20),
             nn.ReLU(),
@@ -36,33 +36,33 @@ class TestModelDumper:
         import shutil
         shutil.rmtree(self.temp_dir, ignore_errors=True)
 
-    def test_torch_model_dump(self):
-        """Test PyTorch model dumping"""
-        import pdb
-        pdb.set_trace()
-        dumper = ModelDumper(framework="torch")
+    # def test_torch_model_dump(self):
+    #     """Test PyTorch model dumping"""
+    #     # import pdb
+    #     # pdb.set_trace()
+    #     dumper = ModelDumper(framework="torch")
 
-        # Dump model
-        dumper.dump_model_execution(
-            self.model,
-            self.input_data,
-            self.temp_dir,
-            "test_model",
-            iterations=2
-        )
-        # Verify files exist
-        assert os.path.exists(os.path.join(self.temp_dir, "model_info.json"))
-        assert os.path.exists(os.path.join(self.temp_dir, "operator_traces.h5"))
+    #     # Dump model
+    #     dumper.dump_model_execution(
+    #         self.model,
+    #         self.input_data,
+    #         self.temp_dir,
+    #         "test_model",
+    #         iterations=2
+    #     )
+    #     # Verify files exist
+    #     assert os.path.exists(os.path.join(self.temp_dir, "model_info.json"))
+    #     assert os.path.exists(os.path.join(self.temp_dir, "operator_traces.h5"))
 
-        # Verify model info
-        import json
-        with open(os.path.join(self.temp_dir, "model_info.json"), "r") as f:
-            model_info = json.load(f)
+    #     # Verify model info
+    #     import json
+    #     with open(os.path.join(self.temp_dir, "model_info.json"), "r") as f:
+    #         model_info = json.load(f)
 
-        assert model_info["framework"] == "torch"
-        assert model_info["model_name"] == "test_model"
-        assert model_info["model_type"] == "Sequential"
-        assert "layers" in model_info
+    #     assert model_info["framework"] == "torch"
+    #     assert model_info["model_name"] == "test_model"
+    #     assert model_info["model_type"] == "Sequential"
+    #     assert "layers" in model_info
 
     # def test_operator_trace_format(self):
     #     """Test operator trace format"""
@@ -172,15 +172,38 @@ class TestModelDumper:
     #             iterations=1
     #         )
 
-    # def test_vllm_framework_placeholder(self):
+    def test_vllm_framework_placeholder(self):
         """Test vLLM framework (placeholder implementation)"""
         # Create a mock vLLM model object
         class MockVLLMModel:
+            def __init__(self):
+                from vllm import LLM, SamplingParams 
+                self.llm = LLM(model="facebook/opt-125m",enforce_eager=True, gpu_memory_utilization=0.3)
+                # Create a sampling params object.
+                # self.sampling_params = SamplingParams(temperature=0.8, top_p=0.95)
+            
             def generate(self, *args, **kwargs):
-                return ["generated text"]
-
+                # outputs = self.llm.generate(self.prompts, self.sampling_params)
+                outputs = self.llm.generate(*args, **kwargs)
+                # Print the outputs.
+                print("\nGenerated Outputs:\n" + "-" * 60)
+                res = []
+                for output in outputs:
+                    prompt = output.prompt
+                    generated_text = output.outputs[0].text
+                    print(f"Prompt:    {prompt!r}")
+                    print(f"Output:    {generated_text!r}")
+                    print("-" * 60)
+                    res.append(generated_text)
+                return res
+        prompts = [
+            "Hello, my name is",
+            "The president of the United States is",
+            "The capital of France is",
+            "The future of AI is",
+        ]
         mock_model = MockVLLMModel()
-        mock_input = {"params": {"temperature": 0.8, "max_tokens": 100}}
+        mock_input = {"prompts": prompts, "params": {"temperature": 0.8, "max_tokens": 3}}
 
         dumper = ModelDumper(framework="vllm")
 

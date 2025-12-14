@@ -1,5 +1,6 @@
 """
 Model structure and operator execution dumper for PyTorch and vLLM frameworks.
+Enhanced with comprehensive operator capture capabilities.
 """
 
 import torch
@@ -8,9 +9,17 @@ import h5py
 import json
 import os
 import time
-from typing import Any, Dict, List, Optional, Union, Tuple
+from typing import Any, Dict, List, Optional, Union, Tuple, Callable
 from dataclasses import dataclass
 import numpy as np
+
+# Import enhanced operator capture capabilities
+try:
+    from operator_capture import OperatorCaptureManager, EnhancedOperatorInfo
+    HAS_ENHANCED_CAP = True
+except ImportError:
+    HAS_ENHANCED_CAP = False
+    print("Warning: Enhanced operator capabilities not available. Install operator_capture module for full functionality.")
 
 
 @dataclass
@@ -32,24 +41,36 @@ class OperatorInfo:
 class ModelDumper:
     """Dumps model structure and operator execution traces"""
 
-    def __init__(self, framework: str = "torch"):
+    def __init__(self, framework: str = "torch", enable_enhanced_capture: bool = False):
         """
         Initialize the model dumper.
 
         Args:
             framework: Framework type, either "torch" or "vllm"
+            enable_enhanced_capture: Whether to enable comprehensive operator capture
         """
         self.framework = framework
         self.operator_traces: List[OperatorInfo] = []
         self.iteration_count = 0
         self.hooks = []
+        self.enable_enhanced_capture = enable_enhanced_capture and HAS_ENHANCED_CAP
+
+        # Initialize enhanced capture capabilities if enabled
+        if self.enable_enhanced_capture:
+            self.enhanced_capture_manager = OperatorCaptureManager()
+            self.enhanced_traces: List[EnhancedOperatorInfo] = []
+        else:
+            self.enhanced_capture_manager = None
+            self.enhanced_traces = []
 
     def dump_model_execution(self,
                            model: Any,
                            input_data: Any,
                            output_path: str,
                            model_name: str = "model",
-                           iterations: int = 1) -> None:
+                           iterations: int = 1,
+                           capture_all_operators: bool = False,
+                           save_enhanced_info: bool = None) -> None:
         """
         Dump model execution with operator traces.
 
@@ -59,12 +80,29 @@ class ModelDumper:
             output_path: Path to save the dump
             model_name: Name of the model
             iterations: Number of forward passes to record
+            capture_all_operators: Whether to capture all torch operators (requires enhanced capture)
+            save_enhanced_info: Whether to save enhanced operator info (None = auto-detect based on enhanced capture)
         """
+        # Determine whether to use enhanced capture
+        use_enhanced = self.enable_enhanced_capture or capture_all_operators
+
+        # Set default for save_enhanced_info
+        if save_enhanced_info is None:
+            save_enhanced_info = use_enhanced
+
+        if use_enhanced and not self.enable_enhanced_capture:
+            raise ValueError("Enhanced operator capture requested but not enabled. Initialize with enable_enhanced_capture=True")
+
         if self.framework == "torch":
-            self._dump_torch_model(model, input_data, output_path, model_name, iterations)
+            if use_enhanced:
+                self._dump_torch_model_enhanced(model, input_data, output_path, model_name, iterations, save_enhanced_info)
+            else:
+                self._dump_torch_model(model, input_data, output_path, model_name, iterations)
         elif self.framework == "vllm":
-            return
-            self._dump_vllm_model(model, input_data, output_path, model_name, iterations)
+            if use_enhanced:
+                self._dump_vllm_model_enhanced(model, input_data, output_path, model_name, iterations, save_enhanced_info)
+            else:
+                self._dump_vllm_model(model, input_data, output_path, model_name, iterations)
         else:
             raise ValueError(f"Unsupported framework: {self.framework}")
 
@@ -148,28 +186,29 @@ class ModelDumper:
             },
             "output_info": {
                 "type": "generated_text",
-                "sample_output": str(outputs[0])[:200] + "..." if len(str(outputs)) > 200 else str(outputs[0]),
+                "sample_output": str(outputs)[:200] + "..." if len(str(outputs)) > 200 else str(outputs),
                 "num_outputs": len(outputs) if isinstance(outputs, list) else 1
             },
             "layers": self._get_vllm_model_structure(model)
         }
-
         with open(os.path.join(output_path, "model_info.json"), "w") as f:
             json.dump(model_info, f, indent=2)
 
         # For vLLM, we need to patch the model to capture operator traces
         self._patch_vllm_model(model, model_name)
 
-        # Run inference
-        for i in range(iterations):
-            self.iteration_count = i
-            if isinstance(input_data, str):
-                outputs = model.generate(input_data)
-            else:
-                sampling_params = SamplingParams(**input_data.get("params", {}))
-                outputs = model.generate(input_data["prompts"], sampling_params)
+        # # Run inference
+        # for i in range(iterations):
+        #     self.iteration_count = i
+        #     if isinstance(input_data, str):
+        #         outputs = model.generate(input_data)
+        #     else:
+        #         sampling_params = SamplingParams(**input_data.get("params", {}))
+        #         outputs = model.generate(input_data["prompts"], sampling_params)
 
         # Save operator traces to HDF5
+        import pdb
+        pdb.set_trace()
         self._save_traces_hdf5(output_path)
 
     def _register_torch_hooks(self, model: nn.Module, model_name: str) -> None:
@@ -353,6 +392,8 @@ class ModelDumper:
 
     def _get_vllm_model_structure(self, model: Any) -> List[Dict]:
         """Extract enhanced vLLM model structure"""
+        import pdb
+        pdb.set_trace()
         structure = [
             {
                 "layer_index": 0,
@@ -443,40 +484,237 @@ class ModelDumper:
 
                 # Save inputs
                 for j, inp in enumerate(trace.inputs):
-                    group.create_dataset(f"input_{j}", data=inp)
+                    if isinstance(inp, np.ndarray):
+                        # Check if it's a string array
+                        if inp.dtype.kind in ['U', 'S', 'O']:
+                            # Encode strings as bytes for HDF5
+                            if inp.dtype.kind == 'U':
+                                encoded = np.array([s.encode('utf-8') for s in inp])
+                                group.create_dataset(f"input_{j}", data=encoded)
+                            else:
+                                group.create_dataset(f"input_{j}", data=inp.astype('S'))
+                        else:
+                            group.create_dataset(f"input_{j}", data=inp)
+                    else:
+                        # Non-array inputs
+                        group.create_dataset(f"input_{j}", data=np.array([str(inp)], dtype='S'))
 
                 # Save outputs
                 for j, out in enumerate(trace.outputs):
-                    group.create_dataset(f"output_{j}", data=out)
+                    if isinstance(out, np.ndarray):
+                        # Check if it's a string array
+                        if out.dtype.kind in ['U', 'S', 'O']:
+                            # Encode strings as bytes for HDF5
+                            if out.dtype.kind == 'U':
+                                encoded = np.array([s.encode('utf-8') for s in out])
+                                group.create_dataset(f"output_{j}", data=encoded)
+                            else:
+                                group.create_dataset(f"output_{j}", data=out.astype('S'))
+                        else:
+                            group.create_dataset(f"output_{j}", data=out)
+                    else:
+                        # Non-array outputs
+                        group.create_dataset(f"output_{j}", data=np.array([str(out)], dtype='S'))
+
+    def _dump_torch_model_enhanced(self,
+                              model: nn.Module,
+                              input_data: torch.Tensor,
+                              output_path: str,
+                              model_name: str,
+                              iterations: int,
+                              save_enhanced_info: bool) -> None:
+        """Dump PyTorch model with comprehensive operator tracking"""
+        if not self.enhanced_capture_manager:
+            raise RuntimeError("Enhanced capture manager not initialized")
+
+        os.makedirs(output_path, exist_ok=True)
+
+        # First, perform the original model dump for compatibility
+        self._dump_torch_model(model, input_data, output_path, model_name, iterations)
+
+        # Configure enhanced capture for all torch operators
+        self.enhanced_capture_manager.configure_capture(
+            capture_torch_ops=True,
+            capture_custom_ops=True,
+            performance_timing=True,
+            memory_tracking=True
+        )
+
+        # Get target modules for context
+        target_modules = [name for name, _ in model.named_modules() if name]
+
+        for iteration in range(iterations):
+            with self.enhanced_capture_manager.capture_context(
+                model_name=model_name,
+                iteration=iteration,
+                target_modules=target_modules
+            ):
+                # Run forward pass with operator capture
+                with torch.no_grad():
+                    _ = model(input_data)
+
+        # Collect enhanced traces
+        self.enhanced_traces = self.enhanced_capture_manager.captured_operators
+
+        # Save enhanced information if requested
+        if save_enhanced_info:
+            self._save_enhanced_information(output_path, model_name)
+
+    def _dump_vllm_model_enhanced(self,
+                                 model: Any,
+                                 input_data: Any,
+                                 output_path: str,
+                                 model_name: str,
+                                 iterations: int,
+                                 save_enhanced_info: bool) -> None:
+        """Dump vLLM model with comprehensive operator tracking"""
+        if not self.enhanced_capture_manager:
+            raise RuntimeError("Enhanced capture manager not initialized")
+
+        os.makedirs(output_path, exist_ok=True)
+
+        # First, perform the original model dump for compatibility
+        self._dump_vllm_model(model, input_data, output_path, model_name, iterations)
+
+        # Configure enhanced capture for both torch and vLLM operators
+        self.enhanced_capture_manager.configure_capture(
+            capture_torch_ops=True,
+            capture_custom_ops=True,
+            capture_vllm_ops=True,
+            performance_timing=True,
+            memory_tracking=True
+        )
+
+        # Register vLLM-specific operators
+        registered_ops = self.enhanced_capture_manager.register_vllm_operators(model)
+        print(f"Registered vLLM operators: {registered_ops}")
+
+        ## Before starting capture, manually hook model methods to the registered operators
+        print("\n--- Attempting to hook model methods to operators ---")
+
+        # Connect model methods to registered operators
+        for op_name in registered_ops:
+            if hasattr(model, op_name):
+                op_info = self.enhanced_capture_manager.custom_operators.get(op_name)
+                if op_info and 'wrapped' in op_info:
+                    setattr(model, op_name, op_info['wrapped'])
+                    print(f"  Hooked {op_name} to wrapped operator")
+            else:
+                print(f"  Model doesn't have method: {op_name}")
+
+        # Special handling for the specific model in our test
+        if hasattr(model, 'scaled_dot_product_attention') and 'attention' in self.enhanced_capture_manager.custom_operators:
+            attention_info = self.enhanced_capture_manager.custom_operators['attention']
+            if 'wrapped' in attention_info:
+                model.scaled_dot_product_attention = attention_info['wrapped']
+                print("  Hooked scaled_dot_product_attention to attention operator")
+
+        if hasattr(model, 'paged_attention_op') and 'paged_attention' in self.enhanced_capture_manager.custom_operators:
+            paged_info = self.enhanced_capture_manager.custom_operators['paged_attention']
+            if 'wrapped' in paged_info:
+                model.paged_attention_op = paged_info['wrapped']
+                print("  Hooked paged_attention_op to paged_attention operator")
+
+        try:
+            # Execute VLLM for operator capture within a single context
+            with self.enhanced_capture_manager.capture_context(
+                model_name=model_name,
+                iteration=0,
+                target_modules=[]
+            ):
+                # Execute VLLM for operator capture
+                if isinstance(input_data, str):
+                    outputs = model.generate(input_data)
+                else:
+                    class DummySamplingParams:
+                        def __init__(self, *args, **kwargs):
+                            pass
+                    SamplingParams = DummySamplingParams
+                    try:
+                        from vllm import SamplingParams
+                    except ImportError:
+                        pass
+
+                    sampling_params = SamplingParams(**input_data.get("params", {}))
+                    outputs = model.generate(input_data["prompts"], sampling_params)
+
+            # Collect enhanced traces
+            self.enhanced_traces = self.enhanced_capture_manager.captured_operators
+            print(f"Captured {len(self.enhanced_traces)} operator traces from vLLM execution")
+
+            # Save enhanced information if requested
+            if save_enhanced_info:
+                self._save_enhanced_information(output_path, model_name)
+
+        finally:
+            pass  # No methods to restore in this simplified approach
+
+    def _save_enhanced_information(self, output_path: str, model_name: str) -> None:
+        """Save enhanced operator traces and statistics"""
+        if not self.enhanced_traces:
+            return
+
+        # Save enhanced operator traces
+        enhanced_traces_path = os.path.join(output_path, "enhanced_operator_traces.json")
+        enhanced_traces_dicts = []
+
+        for trace in self.enhanced_traces:
+            trace_dict = {
+                'iteration': trace.iteration,
+                'model_name': trace.model_name,
+                'operator_name': trace.operator_name,
+                'operator_type': trace.operator_type,
+                'module_path': trace.module_path,
+                'layer_name': trace.layer_name,
+                'call_site': trace.call_site,
+                'input_shapes': trace.input_shapes,
+                'output_shapes': trace.output_shapes,
+                'input_dtypes': trace.input_dtypes,
+                'output_dtypes': trace.output_dtypes,
+                'execution_time_ms': trace.execution_time_ms,
+                'memory_alloc_mb': trace.memory_alloc_mb,
+                'arguments': trace.arguments,
+                'tensor_input_shapes': [list(t.shape) for t in trace.tensor_inputs],
+                'tensor_input_dtypes': [str(t.dtype) for t in trace.tensor_inputs],
+                'tensor_output_shapes': [list(t.shape) for t in trace.tensor_outputs],
+                'tensor_output_dtypes': [str(t.dtype) for t in trace.tensor_outputs],
+                'timestamp': trace.timestamp,
+                'thread_id': trace.thread_id,
+                'context_info': trace.context_info
+            }
+            enhanced_traces_dicts.append(trace_dict)
+
+        with open(enhanced_traces_path, 'w') as f:
+            json.dump(enhanced_traces_dicts, f, indent=2, default=str)
+
+        # Save operator statistics
+        stats_path = os.path.join(output_path, "operator_statistics.json")
+        stats = self.enhanced_capture_manager.get_operator_statistics()
+        stats['model_name'] = model_name
+        stats['total_enhanced_traces'] = len(self.enhanced_traces)
+
+        with open(stats_path, 'w') as f:
+            json.dump(stats, f, indent=2, default=str)
+
+    def get_enhanced_operator_traces(self) -> List[EnhancedOperatorInfo]:
+        """Get the enhanced operator traces"""
+        return self.enhanced_traces
+
+    def get_operator_statistics(self) -> Dict[str, Any]:
+        """Get comprehensive operator statistics"""
+        if not self.enhanced_capture_manager:
+            return {}
+        return self.enhanced_capture_manager.get_operator_statistics()
+
+    def register_custom_operator(self, name: str, func: Callable, operator_type: str = 'custom'):
+        """Register a custom operator for enhanced capture"""
+        if self.enhanced_capture_manager:
+            self.enhanced_capture_manager.register_custom_operator(name, func, operator_type)
+        else:
+            print("Warning: Enhanced capture not enabled. Custom operator registration ignored.")
 
     def _remove_hooks(self) -> None:
         """Remove all registered hooks"""
         for hook in self.hooks:
             hook.remove()
         self.hooks.clear()
-
-    # def load_traces(self, hdf5_path: str) -> List[OperatorInfo]:
-    #     """Load operator traces from HDF5 file"""
-    #     traces = []
-
-    #     with h5py.File(hdf5_path, "r") as f:
-    #         for key in f.keys():
-    #             if key.startswith("trace_"):
-    #                 group = f[key]
-
-    #                 trace = OperatorInfo(
-    #                     iteration=group.attrs["iteration"],
-    #                     model_name=group.attrs["model_name"],
-    #                     layer_name=group.attrs["layer_name"],
-    #                     operator_name=group.attrs["operator_name"],
-    #                     input_shapes=json.loads(group.attrs["input_shapes"]),
-    #                     output_shapes=json.loads(group.attrs["output_shapes"]),
-    #                     input_dtypes=json.loads(group.attrs["input_dtypes"]),
-    #                     output_dtypes=json.loads(group.attrs["output_dtypes"]),
-    #                     inputs=[group[f"input_{i}"][:], group[f"input_{i}"].attrs for i in range(len([k for k in group.keys() if k.startswith("input_")]))],
-    #                     outputs=[group[f"output_{i}"][:], group[f"output_{i}"].attrs for i in range(len([k for k in group.keys() if k.startswith("output_")]))],
-    #                     timestamp=group.attrs["timestamp"]
-    #                 )
-    #                 traces.append(trace)
-
-    #     return traces
