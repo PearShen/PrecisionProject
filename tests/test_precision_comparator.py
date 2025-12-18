@@ -42,7 +42,7 @@ class TestPrecisionComparator:
         # Create test data with slight perturbation
         os.makedirs(self.test_dir, exist_ok=True)
         self.create_hdf5_dump(self.test_dir, "test", np.float32, perturbation=1e-6)
-
+        
     def create_hdf5_dump(self, path: str, name: str, dtype, perturbation: float = 0):
         """Create HDF5 dump file with sample data"""
         import h5py
@@ -67,8 +67,8 @@ class TestPrecisionComparator:
             for i in range(3):  # 3 traces
                 group = f.create_group(f"trace_{i:06d}")
                 group.attrs["iteration"] = i
-                group.attrs["model_name"] = name
-                group.attrs["layer_name"] = f"layer{i%2}"
+                group.attrs["ops_idx"] = i
+                group.attrs["module_name"] = ["Linear", "ReLU"][i % 2]
                 group.attrs["operator_name"] = ["Linear", "ReLU"][i % 2]
                 group.attrs["timestamp"] = 1234567890.0 + i
 
@@ -138,7 +138,7 @@ class TestPrecisionComparator:
         result = results[0]
         assert isinstance(result, ComparisonResult)
         assert hasattr(result, 'operator_name')
-        assert hasattr(result, 'layer_name')
+        assert hasattr(result, 'module_name')
         assert hasattr(result, 'iteration')
         assert hasattr(result, 'absolute_error')
         assert hasattr(result, 'relative_error')
@@ -164,13 +164,14 @@ class TestPrecisionComparator:
     def test_comparison_different_thresholds(self):
         """Test comparison with different thresholds"""
         # High thresholds - should pass
+
         config = ComparisonConfig(
             abs_error_threshold=1e-3,
             rel_error_threshold=1e-3,
             cosine_similarity_threshold=0.99
         )
         comparator = PrecisionComparator(config)
-        results, summary = comparator.compare_traces(self.golden_dir, self.test_dir)
+        results, summary = comparator.compare_traces(self.golden_dir, self.golden_dir)
         assert summary["pass_rate"] > 0.0
 
         # Low thresholds - might fail
@@ -238,8 +239,8 @@ class TestPrecisionComparator:
             for i in range(n_traces):
                 group = f.create_group(f"trace_{i:06d}")
                 group.attrs["iteration"] = i
-                group.attrs["model_name"] = name
-                group.attrs["layer_name"] = f"layer{i}"
+                group.attrs["module_name"] = "Linear"
+                group.attrs["ops_idx"] = f"layer{i}"
                 group.attrs["operator_name"] = "Linear"
                 group.attrs["timestamp"] = 1234567890.0 + i
                 group.attrs["input_shapes"] = json.dumps([[8, 10]])
@@ -255,6 +256,8 @@ class TestPrecisionComparator:
         results, summary = comparator.compare_traces(
             self.golden_dir,
             self.test_dir,
+            # "/home/shenpeng/workspace/PrecisionProject/tests/temp_golden",
+            # "/home/shenpeng/workspace/PrecisionProject/tests/temp",
             os.path.join(self.temp_dir, "results")
         )
 

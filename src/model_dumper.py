@@ -13,6 +13,9 @@ from typing import Any, Dict, List, Optional, Union, Tuple, Callable
 from dataclasses import dataclass
 import numpy as np
 
+
+from utils.data import transfer_torch2np_data
+
 # Import enhanced operator capture capabilities
 try:
     from operator_capture import OperatorCaptureManager, EnhancedOperatorInfo
@@ -25,9 +28,8 @@ except ImportError:
 @dataclass
 class OperatorInfo:
     """Information about an operator execution"""
-    iteration: int
-    model_name: str
-    layer_name: str
+    module: nn.Module
+    module_name: str
     operator_name: str
     input_shapes: List[List[int]]
     output_shapes: List[List[int]]
@@ -53,6 +55,11 @@ class ModelDumper:
         self.operator_traces: List[OperatorInfo] = []
         self.iteration_count = 0
         self.hooks = []
+        self.transformer_ops_head = None
+        self.transformer_ops_tail = None
+        self.module_name_dict = {}
+        self.hook_registry = set()
+        self.ops_count=0
         self.enable_enhanced_capture = enable_enhanced_capture and HAS_ENHANCED_CAP
 
         # Initialize enhanced capture capabilities if enabled
@@ -94,15 +101,10 @@ class ModelDumper:
             raise ValueError("Enhanced operator capture requested but not enabled. Initialize with enable_enhanced_capture=True")
 
         if self.framework == "torch":
-            if use_enhanced:
-                self._dump_torch_model_enhanced(model, input_data, output_path, model_name, iterations, save_enhanced_info)
-            else:
-                self._dump_torch_model(model, input_data, output_path, model_name, iterations)
+            self._dump_torch_model(model, input_data, output_path, model_name, iterations)
         elif self.framework == "vllm":
-            if use_enhanced:
-                self._dump_vllm_model_enhanced(model, input_data, output_path, model_name, iterations, save_enhanced_info)
-            else:
-                self._dump_vllm_model(model, input_data, output_path, model_name, iterations)
+            os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
+            self._dump_vllm_model(model, input_data, output_path, model_name, iterations)
         else:
             raise ValueError(f"Unsupported framework: {self.framework}")
 
@@ -113,7 +115,7 @@ class ModelDumper:
                          model_name: str,
                          iterations: int) -> None:
         """Dump PyTorch model execution"""
-        self._register_torch_hooks(model, model_name)
+        self._register_torch_hooks(model, "")
 
         os.makedirs(output_path, exist_ok=True)
 
@@ -137,17 +139,18 @@ class ModelDumper:
             "layers": self._get_enhanced_torch_model_structure(model)
         }
 
-        with open(os.path.join(output_path, "model_info.json"), "w") as f:
+        with open(os.path.join(output_path, f"model_info.json"), "w") as f:
             json.dump(model_info, f, indent=2)
 
         # Run forward passes
+        # iterations=1
         for i in range(iterations):
             self.iteration_count = i
             with torch.no_grad():
                 _ = model(input_data)
 
         # Save operator traces to HDF5
-        self._save_traces_hdf5(output_path)
+        self._save_traces_hdf5(output_path, model_name)
 
         # Clean up hooks
         self._remove_hooks()
@@ -170,7 +173,7 @@ class ModelDumper:
             SamplingParams = DummySamplingParams
 
         os.makedirs(output_path, exist_ok=True)
-
+        self._register_torch_hooks(model.llm_engine.engine_core.engine_core.model_executor.driver_worker.model_runner.model, "")
         # Execute model to get outputs
         outputs = self._execute_vllm_model(model, input_data)
 
@@ -191,72 +194,96 @@ class ModelDumper:
             },
             "layers": self._get_vllm_model_structure(model)
         }
-        with open(os.path.join(output_path, "model_info.json"), "w") as f:
+        with open(os.path.join(output_path, f"model_info.json"), "w") as f:
             json.dump(model_info, f, indent=2)
 
         # For vLLM, we need to patch the model to capture operator traces
-        self._patch_vllm_model(model, model_name)
+        # self._patch_vllm_model(model, model_name)
+        self._save_traces_hdf5(output_path, model_name)
+        # Clean up hooks
+        
+        print(f".....ops_cout: {self.ops_count}, {len(self.hooks)}, {len(self.operator_traces)}, ")
+        self._remove_hooks()
 
-        # # Run inference
-        # for i in range(iterations):
-        #     self.iteration_count = i
-        #     if isinstance(input_data, str):
-        #         outputs = model.generate(input_data)
-        #     else:
-        #         sampling_params = SamplingParams(**input_data.get("params", {}))
-        #         outputs = model.generate(input_data["prompts"], sampling_params)
+    def _should_register_hook(self, module):
+        """判断是否需要注册钩子"""
+        module_id = id(module)
+        if module_id in self.hook_registry:
+            return False
+        return True
+    
+    def hook_fn(self, name, module, input, output):
+        # Convert inputs and outputs to numpy arrays
+        inputs_np = []
+        for inp in input:
+            if isinstance(inp, torch.Tensor):
+                inputs_np.append(transfer_torch2np_data(inp))
+            else:
+                inputs_np.append(np.array(inp))
 
-        # Save operator traces to HDF5
-        import pdb
-        pdb.set_trace()
-        self._save_traces_hdf5(output_path)
+        outputs_np = []
+        if isinstance(output, torch.Tensor):
+            outputs_np.append(transfer_torch2np_data(output))
+        elif isinstance(output, (list, tuple)):
+            for out in output:
+                if isinstance(out, torch.Tensor):
+                    outputs_np.append(transfer_torch2np_data(out))
+                else:
+                    outputs_np.append(np.array(out))
+        else:
+            outputs_np.append(np.array(output))
 
+        operator_info = OperatorInfo(
+            module=module,
+            module_name=name,
+            operator_name=type(module).__name__,
+            input_shapes=[list(inp.shape) if hasattr(inp, 'shape') else [] for inp in input],
+            input_dtypes=[str(inp.dtype) if hasattr(inp, 'dtype') else str(type(inp).__name__) for inp in input],
+            output_shapes=[list(out.shape) if hasattr(out, 'shape') else [] for out in (outputs_np if isinstance(output, (list, tuple)) else [output])],
+            output_dtypes=[str(out.dtype) if hasattr(out, 'dtype') else str(type(out).__name__) for out in (outputs_np if isinstance(output, (list, tuple)) else [output])],
+            inputs=inputs_np,
+            outputs=outputs_np,
+            timestamp=time.time()
+        )
+        self.operator_traces.append(operator_info)
+        return output
+
+    
+    def _register_hook_with_deduplication(self, child, hook_fn, full_name=''):
+        """去重注册钩子"""
+        if self._should_register_hook(child) or "lm_head" in full_name:
+            # 为每个子模块注册钩子
+            hook = child.register_forward_hook(
+                lambda m, inp, out, name=full_name: hook_fn(name, m, inp, out)
+            )
+            print(f"name: {full_name}")
+            self.hooks.append(hook)
+            self.hook_registry.add(id(child))
+            
+        # else:
+        #     self.part_replace_hooks_name.append(full_name)
+        #     # print(f"name: {full_name}")
+        self.module_name_dict.setdefault(child, []).append(full_name)
+        if self.framework != "torch":
+            if self.transformer_ops_head is None:
+                self.transformer_ops_head = full_name
+            self.transformer_ops_tail = full_name
+        self.ops_count += 1
+    
     def _register_torch_hooks(self, model: nn.Module, model_name: str) -> None:
         """Register forward hooks for PyTorch model"""
-        def hook_fn(layer_name: str):
-            def forward_hook(module, input, output):
-                # Convert inputs and outputs to numpy arrays
-                inputs_np = []
-                for inp in input:
-                    if isinstance(inp, torch.Tensor):
-                        inputs_np.append(inp.detach().cpu().numpy())
-                    else:
-                        inputs_np.append(np.array(inp))
-
-                outputs_np = []
-                if isinstance(output, torch.Tensor):
-                    outputs_np.append(output.detach().cpu().numpy())
-                elif isinstance(output, (list, tuple)):
-                    for out in output:
-                        if isinstance(out, torch.Tensor):
-                            outputs_np.append(out.detach().cpu().numpy())
-                        else:
-                            outputs_np.append(np.array(out))
-                else:
-                    outputs_np.append(np.array(output))
-
-                operator_info = OperatorInfo(
-                    iteration=self.iteration_count,
-                    model_name=model_name,
-                    layer_name=layer_name,
-                    operator_name=type(module).__name__,
-                    input_shapes=[list(inp.shape) if hasattr(inp, 'shape') else [] for inp in input],
-                    output_shapes=[list(out.shape) if hasattr(out, 'shape') else [] for out in (outputs_np if isinstance(output, (list, tuple)) else [output])],
-                    input_dtypes=[str(inp.dtype) if hasattr(inp, 'dtype') else str(type(inp).__name__) for inp in input],
-                    output_dtypes=[str(out.dtype) if hasattr(out, 'dtype') else str(type(out).__name__) for out in (outputs_np if isinstance(output, (list, tuple)) else [output])],
-                    inputs=inputs_np,
-                    outputs=outputs_np,
-                    timestamp=time.time()
-                )
-
-                self.operator_traces.append(operator_info)
-            return forward_hook
-
+        
         # Register hooks for all layers
-        for name, module in model.named_modules():
-            if name:  # Skip root module
-                hook = module.register_forward_hook(hook_fn(name))
-                self.hooks.append(hook)
+        for name, child in model.named_children():
+            
+            full_name = f"{model_name}.{name}" if model_name else name
+            if len(list(child.named_children())) == 0:
+                self._register_hook_with_deduplication(
+                    child, self.hook_fn, full_name
+                )
+            else:
+                # 递归注册
+                self._register_torch_hooks(child, model_name=full_name)
 
     def _patch_vllm_model(self, model: Any, model_name: str) -> None:
         """Patch vLLM model to capture operator traces"""
@@ -385,41 +412,48 @@ class ModelDumper:
 
                 sampling_params = SamplingParams(**input_data.get("params", {}))
                 outputs = model.generate(input_data["prompts"], sampling_params)
-            return outputs
+            res = []
+            for output in outputs:
+                prompt = output.prompt
+                generated_text = output.outputs[0].text
+                print(f"Prompt:    {prompt!r}")
+                print(f"Output:    {generated_text!r}")
+                print("-" * 60)
+                res.append(generated_text)
+            return res
         except:
             # Fallback for testing: return mock output
             return ["Generated text response from mock model"]
 
     def _get_vllm_model_structure(self, model: Any) -> List[Dict]:
         """Extract enhanced vLLM model structure"""
-        import pdb
-        pdb.set_trace()
-        structure = [
-            {
-                "layer_index": 0,
-                "name": "vllm_model",
-                "type": "vLLM",
-                "parameters": "N/A",
-                "description": "vLLM language model with internal transformer architecture",
-                "components": [
-                    {
-                        "name": "tokenizer",
-                        "type": "Tokenizer",
-                        "description": "Text tokenization component"
-                    },
-                    {
-                        "name": "model_engine",
-                        "type": "ModelEngine",
-                        "description": "Core model execution engine"
-                    },
-                    {
-                        "name": "scheduler",
-                        "type": "Scheduler",
-                        "description": "Request scheduling component"
-                    }
-                ]
-            }
-        ]
+        # import pdb
+        # pdb.set_trace()
+        structure = []
+        iter_cout = -1
+        parent_module_name = self.transformer_ops_tail
+        for i, data in enumerate(self.operator_traces):
+            if (self.framework != "torch" and data.module_name == self.transformer_ops_head and parent_module_name == self.transformer_ops_tail) or \
+                (self.framework == "torch" and i%self.ops_count == 0):
+                module_static = {}
+                iter_cout += 1
+                iter_ops_idx = 0
+            module_ops_count = module_static.get(data.module, 0)
+            module_static[data.module] = module_ops_count+1
+            dup_module_lens = len(self.module_name_dict[data.module])
+            obj = dict(
+                iter=iter_cout,
+                ops_idx=iter_ops_idx,
+                module_name=self.module_name_dict[data.module][module_ops_count%dup_module_lens],     #data.module_name,
+                operator_name=data.operator_name,
+                input_shapes=data.input_shapes,
+                input_dtypes=data.input_dtypes,
+                output_shapes=data.output_shapes,
+                output_dtypes=data.output_dtypes
+            )
+            iter_ops_idx += 1
+            structure.append(obj)
+            parent_module_name = obj["module_name"]
         return structure
 
     # Legacy method for compatibility
@@ -435,7 +469,7 @@ class ModelDumper:
                     #Extract trace data
                     trace_data = {
                         "iteration": group.attrs["iteration"],
-                        "model_name": group.attrs["model_name"],
+                        "model_name": group.attrs["module_name"],
                         "layer_name": group.attrs["layer_name"],
                         "operator_name": group.attrs["operator_name"],
                         "input_shapes": json.loads(group.attrs["input_shapes"]),
@@ -461,18 +495,28 @@ class ModelDumper:
 
         return traces
 
-    def _save_traces_hdf5(self, output_path: str) -> None:
+    def _save_traces_hdf5(self, output_path: str, model_name) -> None:
         """Save operator traces to HDF5 file"""
-        hdf5_path = os.path.join(output_path, "operator_traces.h5")
+        hdf5_path = os.path.join(output_path, f"operator_traces.h5")
 
         with h5py.File(hdf5_path, "w") as f:
+            iter_cout = -1
+            parent_module_name = self.transformer_ops_tail
             for i, trace in enumerate(self.operator_traces):
+                if (self.framework != "torch" and trace.module_name == self.transformer_ops_head and parent_module_name == self.transformer_ops_tail) \
+                    or (self.framework == "torch" and i%self.ops_count == 0):
+                    module_static = {}
+                    iter_cout += 1
+                    iter_ops_idx = 0
+                module_ops_count = module_static.get(trace.module, 0)
+                module_static[trace.module] = module_ops_count+1
+                dup_module_lens = len(self.module_name_dict[trace.module])
+                iter=iter_cout,
                 group = f.create_group(f"trace_{i:06d}")
-
+                group.attrs["iteration"] = iter
+                group.attrs["ops_idx"] = iter_ops_idx
                 # Save metadata
-                group.attrs["iteration"] = trace.iteration
-                group.attrs["model_name"] = trace.model_name
-                group.attrs["layer_name"] = trace.layer_name
+                group.attrs["module_name"] = self.module_name_dict[trace.module][module_ops_count%dup_module_lens]
                 group.attrs["operator_name"] = trace.operator_name
                 group.attrs["timestamp"] = trace.timestamp
 
@@ -481,6 +525,9 @@ class ModelDumper:
                 group.attrs["output_shapes"] = json.dumps(trace.output_shapes)
                 group.attrs["input_dtypes"] = json.dumps(trace.input_dtypes)
                 group.attrs["output_dtypes"] = json.dumps(trace.output_dtypes)
+                
+                iter_ops_idx += 1
+                parent_module_name = group.attrs["module_name"]
 
                 # Save inputs
                 for j, inp in enumerate(trace.inputs):
@@ -515,139 +562,6 @@ class ModelDumper:
                     else:
                         # Non-array outputs
                         group.create_dataset(f"output_{j}", data=np.array([str(out)], dtype='S'))
-
-    def _dump_torch_model_enhanced(self,
-                              model: nn.Module,
-                              input_data: torch.Tensor,
-                              output_path: str,
-                              model_name: str,
-                              iterations: int,
-                              save_enhanced_info: bool) -> None:
-        """Dump PyTorch model with comprehensive operator tracking"""
-        if not self.enhanced_capture_manager:
-            raise RuntimeError("Enhanced capture manager not initialized")
-
-        os.makedirs(output_path, exist_ok=True)
-
-        # First, perform the original model dump for compatibility
-        self._dump_torch_model(model, input_data, output_path, model_name, iterations)
-
-        # Configure enhanced capture for all torch operators
-        self.enhanced_capture_manager.configure_capture(
-            capture_torch_ops=True,
-            capture_custom_ops=True,
-            performance_timing=True,
-            memory_tracking=True
-        )
-
-        # Get target modules for context
-        target_modules = [name for name, _ in model.named_modules() if name]
-
-        for iteration in range(iterations):
-            with self.enhanced_capture_manager.capture_context(
-                model_name=model_name,
-                iteration=iteration,
-                target_modules=target_modules
-            ):
-                # Run forward pass with operator capture
-                with torch.no_grad():
-                    _ = model(input_data)
-
-        # Collect enhanced traces
-        self.enhanced_traces = self.enhanced_capture_manager.captured_operators
-
-        # Save enhanced information if requested
-        if save_enhanced_info:
-            self._save_enhanced_information(output_path, model_name)
-
-    def _dump_vllm_model_enhanced(self,
-                                 model: Any,
-                                 input_data: Any,
-                                 output_path: str,
-                                 model_name: str,
-                                 iterations: int,
-                                 save_enhanced_info: bool) -> None:
-        """Dump vLLM model with comprehensive operator tracking"""
-        if not self.enhanced_capture_manager:
-            raise RuntimeError("Enhanced capture manager not initialized")
-
-        os.makedirs(output_path, exist_ok=True)
-
-        # First, perform the original model dump for compatibility
-        self._dump_vllm_model(model, input_data, output_path, model_name, iterations)
-
-        # Configure enhanced capture for both torch and vLLM operators
-        self.enhanced_capture_manager.configure_capture(
-            capture_torch_ops=True,
-            capture_custom_ops=True,
-            capture_vllm_ops=True,
-            performance_timing=True,
-            memory_tracking=True
-        )
-
-        # Register vLLM-specific operators
-        registered_ops = self.enhanced_capture_manager.register_vllm_operators(model)
-        print(f"Registered vLLM operators: {registered_ops}")
-
-        ## Before starting capture, manually hook model methods to the registered operators
-        print("\n--- Attempting to hook model methods to operators ---")
-
-        # Connect model methods to registered operators
-        for op_name in registered_ops:
-            if hasattr(model, op_name):
-                op_info = self.enhanced_capture_manager.custom_operators.get(op_name)
-                if op_info and 'wrapped' in op_info:
-                    setattr(model, op_name, op_info['wrapped'])
-                    print(f"  Hooked {op_name} to wrapped operator")
-            else:
-                print(f"  Model doesn't have method: {op_name}")
-
-        # Special handling for the specific model in our test
-        if hasattr(model, 'scaled_dot_product_attention') and 'attention' in self.enhanced_capture_manager.custom_operators:
-            attention_info = self.enhanced_capture_manager.custom_operators['attention']
-            if 'wrapped' in attention_info:
-                model.scaled_dot_product_attention = attention_info['wrapped']
-                print("  Hooked scaled_dot_product_attention to attention operator")
-
-        if hasattr(model, 'paged_attention_op') and 'paged_attention' in self.enhanced_capture_manager.custom_operators:
-            paged_info = self.enhanced_capture_manager.custom_operators['paged_attention']
-            if 'wrapped' in paged_info:
-                model.paged_attention_op = paged_info['wrapped']
-                print("  Hooked paged_attention_op to paged_attention operator")
-
-        try:
-            # Execute VLLM for operator capture within a single context
-            with self.enhanced_capture_manager.capture_context(
-                model_name=model_name,
-                iteration=0,
-                target_modules=[]
-            ):
-                # Execute VLLM for operator capture
-                if isinstance(input_data, str):
-                    outputs = model.generate(input_data)
-                else:
-                    class DummySamplingParams:
-                        def __init__(self, *args, **kwargs):
-                            pass
-                    SamplingParams = DummySamplingParams
-                    try:
-                        from vllm import SamplingParams
-                    except ImportError:
-                        pass
-
-                    sampling_params = SamplingParams(**input_data.get("params", {}))
-                    outputs = model.generate(input_data["prompts"], sampling_params)
-
-            # Collect enhanced traces
-            self.enhanced_traces = self.enhanced_capture_manager.captured_operators
-            print(f"Captured {len(self.enhanced_traces)} operator traces from vLLM execution")
-
-            # Save enhanced information if requested
-            if save_enhanced_info:
-                self._save_enhanced_information(output_path, model_name)
-
-        finally:
-            pass  # No methods to restore in this simplified approach
 
     def _save_enhanced_information(self, output_path: str, model_name: str) -> None:
         """Save enhanced operator traces and statistics"""
@@ -718,3 +632,13 @@ class ModelDumper:
         for hook in self.hooks:
             hook.remove()
         self.hooks.clear()
+        self.hooks_name = {}
+        # Clean up hooks
+        self.hook_registry.clear()
+        # Clean up hooks
+        self.operator_traces.clear()
+        self.ops_count=0
+        self.module_name_dict = {}
+        self.transformer_ops_head = None
+        self.transformer_ops_tail = None
+        

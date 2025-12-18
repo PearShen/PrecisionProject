@@ -1,0 +1,8521 @@
+{
+  "results": [
+    {
+      "operator_name": "VocabParallelEmbedding",
+      "module_name": "model.embed_tokens",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.0.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.0.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.0.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.0.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.0.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.0.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.0.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.0.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.0.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.1.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.1.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.1.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.1.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.1.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.1.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.1.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.1.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.1.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.2.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.2.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.2.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.2.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.2.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.2.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.2.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.2.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.2.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.3.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.3.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.3.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.3.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.3.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.3.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.3.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.3.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.3.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.4.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.4.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.4.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.4.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.4.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.4.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.4.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.4.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.4.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.5.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.5.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.5.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.5.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.5.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.5.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.5.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.5.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.5.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.6.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.6.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.6.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.6.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.6.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.6.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.6.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.6.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.6.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.7.input_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.7.self_attn.qkv_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.7.self_attn.rotary_emb",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.7.self_attn.attn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.7.self_attn.o_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.7.post_attention_layernorm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.7.mlp.gate_up_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.7.mlp.act_fn",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.7.mlp.down_proj",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.norm",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "LogitsProcessor",
+      "module_name": "logits_processor",
+      "iteration": 0,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "VocabParallelEmbedding",
+      "module_name": "model.embed_tokens",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.0.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.0.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.0.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.0.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.0.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.0.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.0.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.0.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.0.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.1.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.1.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.1.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.1.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.1.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.1.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.1.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.1.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.1.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.2.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.2.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.2.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.2.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.2.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.2.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.2.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.2.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.2.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.3.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.3.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.3.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.3.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.3.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.3.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.3.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.3.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.3.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.4.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.4.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.4.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.4.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.4.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.4.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.4.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.4.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.4.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.5.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.5.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.5.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.5.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.5.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.5.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.5.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.5.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.5.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.6.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.6.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.6.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.6.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.6.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.6.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.6.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.6.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.6.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.7.input_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.7.self_attn.qkv_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.7.self_attn.rotary_emb",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.7.self_attn.attn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.7.self_attn.o_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.7.post_attention_layernorm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.7.mlp.gate_up_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.7.mlp.act_fn",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.7.mlp.down_proj",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.norm",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "LogitsProcessor",
+      "module_name": "logits_processor",
+      "iteration": 1,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "VocabParallelEmbedding",
+      "module_name": "model.embed_tokens",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.0.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.0.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.0.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.0.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.0.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.0.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.0.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.0.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.0.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.1.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.1.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.1.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.1.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.1.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.1.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.1.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.1.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.1.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.2.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.2.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.2.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.2.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.2.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.2.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.2.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.2.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.2.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.3.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.3.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.3.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.3.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.3.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.3.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.3.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.3.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.3.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.4.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.4.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.4.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.4.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.4.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.4.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.4.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.4.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.4.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.5.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.5.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.5.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.5.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.5.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.5.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.5.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.5.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.5.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.6.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.6.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.6.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.6.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.6.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.6.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.6.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.6.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.6.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.7.input_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "QKVParallelLinear",
+      "module_name": "model.layers.7.self_attn.qkv_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RotaryEmbedding",
+      "module_name": "model.layers.7.self_attn.rotary_emb",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "Attention",
+      "module_name": "model.layers.7.self_attn.attn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 3,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.7.self_attn.o_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.layers.7.post_attention_layernorm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "MergedColumnParallelLinear",
+      "module_name": "model.layers.7.mlp.gate_up_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "SiluAndMul",
+      "module_name": "model.layers.7.mlp.act_fn",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RowParallelLinear",
+      "module_name": "model.layers.7.mlp.down_proj",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "RMSNorm",
+      "module_name": "model.norm",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 2,
+        "output_count": 2,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    },
+    {
+      "operator_name": "LogitsProcessor",
+      "module_name": "logits_processor",
+      "iteration": 2,
+      "absolute_error_input": 0.0,
+      "relative_error_input": 0.0,
+      "cosine_similarity_input": 1.0,
+      "absolute_error_output": 0.0,
+      "relative_error_output": 0.0,
+      "cosine_similarity_output": 1.0,
+      "absolute_error": 0.0,
+      "relative_error": 0.0,
+      "cosine_similarity": 1.0,
+      "passed": true,
+      "details": {
+        "input_count": 1,
+        "output_count": 1,
+        "input_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "output_errors": [
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "total_comparisons": 225,
+    "passed_comparisons": 225,
+    "failed_comparisons": 0,
+    "pass_rate": 1.0,
+    "max_absolute_error": 0.0,
+    "mean_absolute_error": 0.0,
+    "max_relative_error": 0.0,
+    "mean_relative_error": 0.0,
+    "min_cosine_similarity": 1.0,
+    "mean_cosine_similarity": 1.0
+  }
+}

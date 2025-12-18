@@ -1,0 +1,6668 @@
+{
+  "framework": "vllm",
+  "model_name": "nickypro/tinyllama-42M-fp32",
+  "model_type": "vLLM",
+  "parameters": "N/A",
+  "input_info": {
+    "type": "text_or_sampling_params",
+    "sample_input": "{'prompts': ['Hello, my name is', 'The president of the United States is', 'The capital of France is', 'The future of AI is'], 'params': {'temperature': 0.0, 'max_tokens': 3}}"
+  },
+  "output_info": {
+    "type": "generated_text",
+    "sample_output": "[' Jack. He', ' a very special', ' a very special', ' a very special']",
+    "num_outputs": 4
+  },
+  "layers": [
+    {
+      "iter": 0,
+      "ops_idx": 0,
+      "module_name": "model.embed_tokens",
+      "operator_name": "VocabParallelEmbedding",
+      "input_shapes": [
+        [
+          27
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int32"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 1,
+      "module_name": "model.layers.0.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 2,
+      "module_name": "model.layers.0.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 3,
+      "module_name": "model.layers.0.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 4,
+      "module_name": "model.layers.0.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 5,
+      "module_name": "model.layers.0.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 6,
+      "module_name": "model.layers.0.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 7,
+      "module_name": "model.layers.0.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 8,
+      "module_name": "model.layers.0.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 9,
+      "module_name": "model.layers.0.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 10,
+      "module_name": "model.layers.1.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 11,
+      "module_name": "model.layers.1.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 12,
+      "module_name": "model.layers.1.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 13,
+      "module_name": "model.layers.1.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 14,
+      "module_name": "model.layers.1.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 15,
+      "module_name": "model.layers.1.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 16,
+      "module_name": "model.layers.1.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 17,
+      "module_name": "model.layers.1.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 18,
+      "module_name": "model.layers.1.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 19,
+      "module_name": "model.layers.2.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 20,
+      "module_name": "model.layers.2.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 21,
+      "module_name": "model.layers.2.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 22,
+      "module_name": "model.layers.2.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 23,
+      "module_name": "model.layers.2.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 24,
+      "module_name": "model.layers.2.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 25,
+      "module_name": "model.layers.2.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 26,
+      "module_name": "model.layers.2.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 27,
+      "module_name": "model.layers.2.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 28,
+      "module_name": "model.layers.3.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 29,
+      "module_name": "model.layers.3.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 30,
+      "module_name": "model.layers.3.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 31,
+      "module_name": "model.layers.3.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 32,
+      "module_name": "model.layers.3.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 33,
+      "module_name": "model.layers.3.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 34,
+      "module_name": "model.layers.3.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 35,
+      "module_name": "model.layers.3.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 36,
+      "module_name": "model.layers.3.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 37,
+      "module_name": "model.layers.4.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 38,
+      "module_name": "model.layers.4.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 39,
+      "module_name": "model.layers.4.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 40,
+      "module_name": "model.layers.4.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 41,
+      "module_name": "model.layers.4.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 42,
+      "module_name": "model.layers.4.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 43,
+      "module_name": "model.layers.4.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 44,
+      "module_name": "model.layers.4.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 45,
+      "module_name": "model.layers.4.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 46,
+      "module_name": "model.layers.5.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 47,
+      "module_name": "model.layers.5.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 48,
+      "module_name": "model.layers.5.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 49,
+      "module_name": "model.layers.5.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 50,
+      "module_name": "model.layers.5.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 51,
+      "module_name": "model.layers.5.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 52,
+      "module_name": "model.layers.5.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 53,
+      "module_name": "model.layers.5.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 54,
+      "module_name": "model.layers.5.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 55,
+      "module_name": "model.layers.6.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 56,
+      "module_name": "model.layers.6.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 57,
+      "module_name": "model.layers.6.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 58,
+      "module_name": "model.layers.6.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 59,
+      "module_name": "model.layers.6.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 60,
+      "module_name": "model.layers.6.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 61,
+      "module_name": "model.layers.6.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 62,
+      "module_name": "model.layers.6.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 63,
+      "module_name": "model.layers.6.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 64,
+      "module_name": "model.layers.7.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 65,
+      "module_name": "model.layers.7.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 66,
+      "module_name": "model.layers.7.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          27
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 67,
+      "module_name": "model.layers.7.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 68,
+      "module_name": "model.layers.7.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 69,
+      "module_name": "model.layers.7.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 70,
+      "module_name": "model.layers.7.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 71,
+      "module_name": "model.layers.7.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          27,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 72,
+      "module_name": "model.layers.7.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          27,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 73,
+      "module_name": "model.norm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          27,
+          512
+        ],
+        [
+          27,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 0,
+      "ops_idx": 74,
+      "module_name": "logits_processor",
+      "operator_name": "LogitsProcessor",
+      "input_shapes": [
+        [],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "ParallelLMHead",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          32000
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 0,
+      "module_name": "model.embed_tokens",
+      "operator_name": "VocabParallelEmbedding",
+      "input_shapes": [
+        [
+          4
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int32"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 1,
+      "module_name": "model.layers.0.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 2,
+      "module_name": "model.layers.0.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 3,
+      "module_name": "model.layers.0.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 4,
+      "module_name": "model.layers.0.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 5,
+      "module_name": "model.layers.0.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 6,
+      "module_name": "model.layers.0.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 7,
+      "module_name": "model.layers.0.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 8,
+      "module_name": "model.layers.0.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 9,
+      "module_name": "model.layers.0.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 10,
+      "module_name": "model.layers.1.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 11,
+      "module_name": "model.layers.1.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 12,
+      "module_name": "model.layers.1.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 13,
+      "module_name": "model.layers.1.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 14,
+      "module_name": "model.layers.1.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 15,
+      "module_name": "model.layers.1.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 16,
+      "module_name": "model.layers.1.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 17,
+      "module_name": "model.layers.1.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 18,
+      "module_name": "model.layers.1.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 19,
+      "module_name": "model.layers.2.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 20,
+      "module_name": "model.layers.2.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 21,
+      "module_name": "model.layers.2.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 22,
+      "module_name": "model.layers.2.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 23,
+      "module_name": "model.layers.2.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 24,
+      "module_name": "model.layers.2.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 25,
+      "module_name": "model.layers.2.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 26,
+      "module_name": "model.layers.2.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 27,
+      "module_name": "model.layers.2.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 28,
+      "module_name": "model.layers.3.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 29,
+      "module_name": "model.layers.3.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 30,
+      "module_name": "model.layers.3.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 31,
+      "module_name": "model.layers.3.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 32,
+      "module_name": "model.layers.3.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 33,
+      "module_name": "model.layers.3.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 34,
+      "module_name": "model.layers.3.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 35,
+      "module_name": "model.layers.3.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 36,
+      "module_name": "model.layers.3.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 37,
+      "module_name": "model.layers.4.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 38,
+      "module_name": "model.layers.4.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 39,
+      "module_name": "model.layers.4.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 40,
+      "module_name": "model.layers.4.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 41,
+      "module_name": "model.layers.4.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 42,
+      "module_name": "model.layers.4.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 43,
+      "module_name": "model.layers.4.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 44,
+      "module_name": "model.layers.4.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 45,
+      "module_name": "model.layers.4.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 46,
+      "module_name": "model.layers.5.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 47,
+      "module_name": "model.layers.5.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 48,
+      "module_name": "model.layers.5.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 49,
+      "module_name": "model.layers.5.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 50,
+      "module_name": "model.layers.5.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 51,
+      "module_name": "model.layers.5.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 52,
+      "module_name": "model.layers.5.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 53,
+      "module_name": "model.layers.5.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 54,
+      "module_name": "model.layers.5.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 55,
+      "module_name": "model.layers.6.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 56,
+      "module_name": "model.layers.6.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 57,
+      "module_name": "model.layers.6.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 58,
+      "module_name": "model.layers.6.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 59,
+      "module_name": "model.layers.6.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 60,
+      "module_name": "model.layers.6.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 61,
+      "module_name": "model.layers.6.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 62,
+      "module_name": "model.layers.6.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 63,
+      "module_name": "model.layers.6.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 64,
+      "module_name": "model.layers.7.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 65,
+      "module_name": "model.layers.7.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 66,
+      "module_name": "model.layers.7.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 67,
+      "module_name": "model.layers.7.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 68,
+      "module_name": "model.layers.7.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 69,
+      "module_name": "model.layers.7.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 70,
+      "module_name": "model.layers.7.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 71,
+      "module_name": "model.layers.7.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 72,
+      "module_name": "model.layers.7.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 73,
+      "module_name": "model.norm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 1,
+      "ops_idx": 74,
+      "module_name": "logits_processor",
+      "operator_name": "LogitsProcessor",
+      "input_shapes": [
+        [],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "ParallelLMHead",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          32000
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 0,
+      "module_name": "model.embed_tokens",
+      "operator_name": "VocabParallelEmbedding",
+      "input_shapes": [
+        [
+          4
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int32"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 1,
+      "module_name": "model.layers.0.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 2,
+      "module_name": "model.layers.0.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 3,
+      "module_name": "model.layers.0.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 4,
+      "module_name": "model.layers.0.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 5,
+      "module_name": "model.layers.0.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 6,
+      "module_name": "model.layers.0.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 7,
+      "module_name": "model.layers.0.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 8,
+      "module_name": "model.layers.0.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 9,
+      "module_name": "model.layers.0.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 10,
+      "module_name": "model.layers.1.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 11,
+      "module_name": "model.layers.1.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 12,
+      "module_name": "model.layers.1.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 13,
+      "module_name": "model.layers.1.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 14,
+      "module_name": "model.layers.1.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 15,
+      "module_name": "model.layers.1.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 16,
+      "module_name": "model.layers.1.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 17,
+      "module_name": "model.layers.1.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 18,
+      "module_name": "model.layers.1.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 19,
+      "module_name": "model.layers.2.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 20,
+      "module_name": "model.layers.2.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 21,
+      "module_name": "model.layers.2.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 22,
+      "module_name": "model.layers.2.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 23,
+      "module_name": "model.layers.2.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 24,
+      "module_name": "model.layers.2.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 25,
+      "module_name": "model.layers.2.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 26,
+      "module_name": "model.layers.2.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 27,
+      "module_name": "model.layers.2.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 28,
+      "module_name": "model.layers.3.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 29,
+      "module_name": "model.layers.3.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 30,
+      "module_name": "model.layers.3.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 31,
+      "module_name": "model.layers.3.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 32,
+      "module_name": "model.layers.3.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 33,
+      "module_name": "model.layers.3.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 34,
+      "module_name": "model.layers.3.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 35,
+      "module_name": "model.layers.3.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 36,
+      "module_name": "model.layers.3.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 37,
+      "module_name": "model.layers.4.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 38,
+      "module_name": "model.layers.4.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 39,
+      "module_name": "model.layers.4.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 40,
+      "module_name": "model.layers.4.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 41,
+      "module_name": "model.layers.4.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 42,
+      "module_name": "model.layers.4.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 43,
+      "module_name": "model.layers.4.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 44,
+      "module_name": "model.layers.4.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 45,
+      "module_name": "model.layers.4.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 46,
+      "module_name": "model.layers.5.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 47,
+      "module_name": "model.layers.5.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 48,
+      "module_name": "model.layers.5.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 49,
+      "module_name": "model.layers.5.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 50,
+      "module_name": "model.layers.5.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 51,
+      "module_name": "model.layers.5.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 52,
+      "module_name": "model.layers.5.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 53,
+      "module_name": "model.layers.5.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 54,
+      "module_name": "model.layers.5.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 55,
+      "module_name": "model.layers.6.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 56,
+      "module_name": "model.layers.6.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 57,
+      "module_name": "model.layers.6.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 58,
+      "module_name": "model.layers.6.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 59,
+      "module_name": "model.layers.6.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 60,
+      "module_name": "model.layers.6.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 61,
+      "module_name": "model.layers.6.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 62,
+      "module_name": "model.layers.6.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 63,
+      "module_name": "model.layers.6.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 64,
+      "module_name": "model.layers.7.input_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 65,
+      "module_name": "model.layers.7.self_attn.qkv_proj",
+      "operator_name": "QKVParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1536
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 66,
+      "module_name": "model.layers.7.self_attn.rotary_emb",
+      "operator_name": "RotaryEmbedding",
+      "input_shapes": [
+        [
+          4
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.int64",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 67,
+      "module_name": "model.layers.7.self_attn.attn",
+      "operator_name": "Attention",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 68,
+      "module_name": "model.layers.7.self_attn.o_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 69,
+      "module_name": "model.layers.7.post_attention_layernorm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 70,
+      "module_name": "model.layers.7.mlp.gate_up_proj",
+      "operator_name": "MergedColumnParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          2752
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 71,
+      "module_name": "model.layers.7.mlp.act_fn",
+      "operator_name": "SiluAndMul",
+      "input_shapes": [
+        [
+          4,
+          2752
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 72,
+      "module_name": "model.layers.7.mlp.down_proj",
+      "operator_name": "RowParallelLinear",
+      "input_shapes": [
+        [
+          4,
+          1376
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        []
+      ],
+      "output_dtypes": [
+        "float16",
+        "object"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 73,
+      "module_name": "model.norm",
+      "operator_name": "RMSNorm",
+      "input_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          512
+        ],
+        [
+          4,
+          512
+        ]
+      ],
+      "output_dtypes": [
+        "float16",
+        "float16"
+      ]
+    },
+    {
+      "iter": 2,
+      "ops_idx": 74,
+      "module_name": "logits_processor",
+      "operator_name": "LogitsProcessor",
+      "input_shapes": [
+        [],
+        [
+          4,
+          512
+        ]
+      ],
+      "input_dtypes": [
+        "ParallelLMHead",
+        "torch.float16"
+      ],
+      "output_shapes": [
+        [
+          4,
+          32000
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16"
+      ]
+    }
+  ]
+}

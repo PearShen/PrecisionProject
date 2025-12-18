@@ -1,0 +1,14 @@
+Precision Comparison Summary
+========================================
+Total comparisons: 225
+Passed: 225
+Failed: 0
+Pass rate: 100.00%
+
+Error Statistics:
+Max absolute error: 0.00e+00
+Mean absolute error: 0.00e+00
+Max relative error: 0.00e+00
+Mean relative error: 0.00e+00
+Min cosine similarity: 1.000000
+Mean cosine similarity: 1.000000

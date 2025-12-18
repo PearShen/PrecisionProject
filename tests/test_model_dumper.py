@@ -22,7 +22,7 @@ class TestModelDumper:
 
     def setup_method(self):
         """Setup test environment"""
-        self.temp_dir = "/home/workspace/Agent_workspace/PrecisionProject/tests/temp/"#tempfile.mkdtemp()
+        self.temp_dir = tempfile.mkdtemp()
         self.model = nn.Sequential(
             nn.Linear(10, 20),
             nn.ReLU(),
@@ -175,47 +175,37 @@ class TestModelDumper:
     def test_vllm_framework_placeholder(self):
         """Test vLLM framework (placeholder implementation)"""
         # Create a mock vLLM model object
-        class MockVLLMModel:
-            def __init__(self):
-                from vllm import LLM, SamplingParams 
-                self.llm = LLM(model="facebook/opt-125m",enforce_eager=True, gpu_memory_utilization=0.3)
-                # Create a sampling params object.
-                # self.sampling_params = SamplingParams(temperature=0.8, top_p=0.95)
-            
-            def generate(self, *args, **kwargs):
-                # outputs = self.llm.generate(self.prompts, self.sampling_params)
-                outputs = self.llm.generate(*args, **kwargs)
-                # Print the outputs.
-                print("\nGenerated Outputs:\n" + "-" * 60)
-                res = []
-                for output in outputs:
-                    prompt = output.prompt
-                    generated_text = output.outputs[0].text
-                    print(f"Prompt:    {prompt!r}")
-                    print(f"Output:    {generated_text!r}")
-                    print("-" * 60)
-                    res.append(generated_text)
-                return res
         prompts = [
             "Hello, my name is",
             "The president of the United States is",
             "The capital of France is",
             "The future of AI is",
         ]
-        mock_model = MockVLLMModel()
-        mock_input = {"prompts": prompts, "params": {"temperature": 0.8, "max_tokens": 3}}
+        from vllm import LLM, SamplingParams 
+        os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
+        # model_name = "facebook/opt-125m"
+        model_name = "nickypro/tinyllama-42M-fp32"
+        llm = LLM(model=model_name,enforce_eager=True, gpu_memory_utilization=0.03, dtype=torch.float16)
+        mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 3}}
+        
+        # mock_model = MockVLLMModel(model_name)
+        
 
         dumper = ModelDumper(framework="vllm")
-
+        self.dump_dir = f"/home/shenpeng/workspace/PrecisionProject/tests/temp_{model_name.replace('/','_')}/"
+        
         # This should work with the placeholder implementation
         dumper.dump_model_execution(
-            mock_model,
+            llm,
             mock_input,
-            self.temp_dir,
-            "mock_vllm_model",
+            self.dump_dir,
+            model_name,
             iterations=1
         )
-
+        
         # Verify files were created
-        assert os.path.exists(os.path.join(self.temp_dir, "model_info.json"))
-        assert os.path.exists(os.path.join(self.temp_dir, "operator_traces.h5"))
+        assert os.path.exists(os.path.join(self.dump_dir, f"model_info.json"))
+        assert os.path.exists(os.path.join(self.dump_dir, f"operator_traces.h5"))
+T = TestModelDumper()
+T.setup_method()
+T.test_vllm_framework_placeholder()

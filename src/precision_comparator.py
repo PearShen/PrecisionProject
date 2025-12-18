@@ -16,8 +16,14 @@ import torch
 class ComparisonResult:
     """Result of precision comparison"""
     operator_name: str
-    layer_name: str
+    module_name: str
     iteration: int
+    absolute_error_input: float
+    relative_error_input: float
+    cosine_similarity_input: float
+    absolute_error_output: float
+    relative_error_output: float
+    cosine_similarity_output: float
     absolute_error: float
     relative_error: float
     cosine_similarity: float
@@ -112,10 +118,10 @@ class PrecisionComparator:
         test_flat = test_tensor.flatten().astype(np.float64)
 
         # Absolute error
-        abs_error = np.mean(np.abs(golden_flat - test_flat))
+        abs_error = np.max(np.abs(golden_flat - test_flat))
 
         # Relative error
-        rel_error = np.mean(np.abs((golden_flat - test_flat) / (golden_flat + 1e-12)))
+        rel_error = np.max(np.abs((golden_flat - test_flat) / (golden_flat + 1e-12)))
 
         # Cosine similarity
         cosine_sim = 1 - cosine(golden_flat, test_flat)
@@ -145,8 +151,8 @@ class PrecisionComparator:
         """Extract trace data from HDF5 group"""
         trace = {
             "iteration": group.attrs["iteration"],
-            "model_name": group.attrs["model_name"],
-            "layer_name": group.attrs["layer_name"],
+            "ops_idx": group.attrs["ops_idx"],
+            "module_name": group.attrs["module_name"],
             "operator_name": group.attrs["operator_name"],
             "timestamp": group.attrs["timestamp"],
             "input_shapes": json.loads(group.attrs["input_shapes"]),
@@ -159,13 +165,15 @@ class PrecisionComparator:
 
         # Load inputs
         input_keys = [k for k in group.keys() if k.startswith("input_")]
-        for k in sorted(input_keys):
-            trace["inputs"].append(group[k][:])
+        for idx, k in enumerate(sorted(input_keys)):
+            if trace["input_shapes"][idx] :
+                trace["inputs"].append(group[k][:])
 
         # Load outputs
         output_keys = [k for k in group.keys() if k.startswith("output_")]
-        for k in sorted(output_keys):
-            trace["outputs"].append(group[k][:])
+        for idx, k in enumerate(sorted(output_keys)):
+            if trace["output_shapes"][idx] :
+                trace["outputs"].append(group[k][:])
 
         return trace
 
@@ -174,8 +182,8 @@ class PrecisionComparator:
         # Basic validation
         if golden["iteration"] != test["iteration"]:
             raise ValueError(f"Iteration mismatch: {golden['iteration']} vs {test['iteration']}")
-        if golden["layer_name"] != test["layer_name"]:
-            raise ValueError(f"Layer name mismatch: {golden['layer_name']} vs {test['layer_name']}")
+        if golden["module_name"] != test["module_name"]:
+            raise ValueError(f"Layer name mismatch: {golden['module_name']} vs {test['module_name']}")
         if golden["operator_name"] != test["operator_name"]:
             raise ValueError(f"Operator name mismatch: {golden['operator_name']} vs {test['operator_name']}")
 
@@ -193,6 +201,23 @@ class PrecisionComparator:
                 abs_err, rel_err, cos_sim = self.compare_tensors(golden_output, test_output)
                 output_errors.append((abs_err, rel_err, cos_sim))
 
+        
+        # Calculate input errors
+        if input_errors:
+            abs_error_input = np.mean([err[0] for err in input_errors])
+            rel_error_input = np.mean([err[1] for err in input_errors])
+            cosine_similarity_input = np.mean([err[2] for err in input_errors])
+        else:
+            abs_error_input = rel_error_input = cosine_similarity_input = 0.0
+            
+        # Calculate output errors
+        if output_errors:
+            abs_error_output = np.mean([err[0] for err in output_errors])
+            rel_error_output = np.mean([err[1] for err in output_errors])
+            cosine_similarity_output = np.mean([err[2] for err in output_errors])
+        else:
+            abs_error_output = rel_error_output = cosine_similarity_output = 0.0
+        
         # Calculate overall errors
         all_errors = input_errors + output_errors
         if all_errors:
@@ -211,11 +236,20 @@ class PrecisionComparator:
 
         return ComparisonResult(
             operator_name=golden["operator_name"],
-            layer_name=golden["layer_name"],
+            module_name=golden["module_name"],
             iteration=golden["iteration"],
+            absolute_error_input=abs_error_input,
+            relative_error_input=rel_error_input,
+            cosine_similarity_input=cosine_similarity_input,
+            
+            absolute_error_output=abs_error_output,
+            relative_error_output=rel_error_output,
+            cosine_similarity_output=cosine_similarity_output,
+            
             absolute_error=abs_error,
             relative_error=rel_error,
             cosine_similarity=cosine_similarity,
+            
             passed=passed,
             details={
                 "input_count": len(golden["inputs"]),
@@ -236,9 +270,9 @@ class PrecisionComparator:
         passed_count = sum(1 for r in results if r.passed)
 
         return {
-            "total_comparisons": len(results),
-            "passed_comparisons": passed_count,
-            "failed_comparisons": len(results) - passed_count,
+            "total_comparisons": int(len(results)),
+            "passed_comparisons": int(passed_count),
+            "failed_comparisons": int(len(results) - passed_count),
             "pass_rate": passed_count / len(results),
             "max_absolute_error": np.max(abs_errors),
             "mean_absolute_error": np.mean(abs_errors),
@@ -255,12 +289,21 @@ class PrecisionComparator:
         for r in results:
             results_data.append({
                 "operator_name": r.operator_name,
-                "layer_name": r.layer_name,
-                "iteration": r.iteration,
+                "module_name": r.module_name,
+                "iteration": int(r.iteration),
+                
+                "absolute_error_input": float(r.absolute_error_input),
+                "relative_error_input": float(r.relative_error_input),
+                "cosine_similarity_input": float(r.cosine_similarity_input),
+                
+                "absolute_error_output": float(r.absolute_error_output),
+                "relative_error_output": float(r.relative_error_output),
+                "cosine_similarity_output": float(r.cosine_similarity_output),
+                
                 "absolute_error": float(r.absolute_error),
                 "relative_error": float(r.relative_error),
                 "cosine_similarity": float(r.cosine_similarity),
-                "passed": r.passed,
+                "passed": bool(r.passed),
                 "details": r.details
             })
 

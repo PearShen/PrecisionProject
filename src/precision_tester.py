@@ -9,8 +9,8 @@ from typing import Any, Dict, List, Optional, Union
 import torch
 import torch.nn as nn
 
-from .model_dumper import ModelDumper
-from .precision_comparator import PrecisionComparator, ComparisonConfig
+from model_dumper import ModelDumper
+from precision_comparator import PrecisionComparator, ComparisonConfig
 
 
 class PrecisionTester:
@@ -106,15 +106,17 @@ class PrecisionTester:
 
     def _create_perturbed_model(self, model: nn.Module, perturbation: float) -> nn.Module:
         """Create a perturbed version of the model for testing"""
-        import copy
-        perturbed_model = copy.deepcopy(model)
+        if self.framework == "torch":
+            import copy
+            perturbed_model = copy.deepcopy(model)
+            with torch.no_grad():
+                for param in perturbed_model.parameters():
+                    if param.requires_grad:
+                        param.add_(torch.randn_like(param) * perturbation)
 
-        with torch.no_grad():
-            for param in perturbed_model.parameters():
-                if param.requires_grad:
-                    param.add_(torch.randn_like(param) * perturbation)
-
-        return perturbed_model
+            return perturbed_model
+        else:
+            return model
 
     def load_and_compare_dumps(self, dump_paths: List[str], output_path: str) -> Dict:
         """

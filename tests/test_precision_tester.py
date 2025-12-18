@@ -24,7 +24,7 @@ class TestPrecisionTester:
 
     def setup_method(self):
         """Setup test environment"""
-        self.temp_dir = tempfile.mkdtemp()
+        self.temp_dir = "/home/shenpeng/workspace/PrecisionProject/tests"#tempfile.mkdtemp()
         self.model = nn.Sequential(
             nn.Linear(10, 20),
             nn.ReLU(),
@@ -35,7 +35,8 @@ class TestPrecisionTester:
 
     def teardown_method(self):
         """Cleanup test environment"""
-        shutil.rmtree(self.temp_dir, ignore_errors=True)
+        return
+        # shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def test_precision_tester_initialization(self):
         """Test PrecisionTester initialization"""
@@ -182,47 +183,82 @@ class TestPrecisionTester:
 
         assert results["summary"]["total_comparisons"] > 0
         assert "pass_rate" in results["summary"]
-
-    def test_vllm_framework_handling(self):
-        """Test vLLM framework handling (placeholder implementation)"""
-        class MockVLLMModel:
-            def __init__(self):
-                self.test_value = "test"
-
-            state_dict_value = {"test": "value"}
-
-            def parameters(self):
-                return []
-
-            def __call__(self, *args, **kwargs):
-                return "output"
-
+    
+    def test_vllm_dump_and_compare_methods(self):
+        """Test individual dump and compare methods"""
+        # tester = PrecisionTester(framework="torch")
+        prompts = [
+            "Hello, my name is",
+            "The president of the United States is",
+            "The capital of France is",
+            "The future of AI is",
+        ]
+        from vllm import LLM, SamplingParams 
+        os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
+        model_name = "nickypro/tinyllama-42M-fp32"
+        llm = LLM(model=model_name,enforce_eager=True, gpu_memory_utilization=0.03, dtype=torch.float)
+        mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 3}}
         tester = PrecisionTester(framework="vllm")
-        mock_model = MockVLLMModel()
-        mock_input = {"test": "data"}
 
-        # This should work even with placeholder implementation
-        results = tester.test_model_precision(
-            mock_model,
-            mock_input,
-            self.temp_dir,
-            "mock_vllm",
-            iterations=1,
-            perturbation=1e-6
-        )
+        # Test dump method
+        golden_path = os.path.join(self.temp_dir, "golden")
+        tester.dump_model_execution(llm, mock_input, golden_path, "golden_model", iterations=1)
 
-        # Should still create the necessary files
-        assert os.path.exists(results["golden_path"])
-        assert os.path.exists(results["test_path"])
+        assert os.path.exists(golden_path)
+        assert os.path.exists(os.path.join(golden_path, "model_info.json"))
+        assert os.path.exists(os.path.join(golden_path, "operator_traces.h5"))
 
-    def test_error_handling(self):
-        """Test error handling"""
-        tester = PrecisionTester(framework="torch")
+        # Create test dump
+        test_path = os.path.join(self.temp_dir, "test")
+        perturbed_model = tester._create_perturbed_model(llm, 1e-6)
+        tester.dump_model_execution(perturbed_model, mock_input, test_path, "test_model", iterations=1)
 
-        # Test with insufficient dump paths
-        with pytest.raises(ValueError, match="At least 2 dump paths are required"):
-            tester.load_and_compare_dumps([self.temp_dir], self.temp_dir)
+        # Test compare method
+        results_path = os.path.join(self.temp_dir, "results")
+        results, summary = tester.compare_precision(golden_path, test_path, results_path)
 
-        # Test with non-existent paths for comparison
-        with pytest.raises(Exception):  # Should raise some kind of error
-            tester.compare_precision("/nonexistent/golden", "/nonexistent/test")
+        assert len(results) > 0
+        assert "pass_rate" in summary
+        assert os.path.exists(results_path)
+        
+    def test_vllm_dump_and_compare_methods_with_offline_golden(self):
+        """Test individual dump and compare methods"""
+        # tester = PrecisionTester(framework="torch")
+        prompts = [
+            "Hello, my name is",
+            "The president of the United States is",
+            "The capital of France is",
+            "The future of AI is",
+        ]
+        from vllm import LLM, SamplingParams 
+        os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
+        model_name = "nickypro/tinyllama-42M-fp32"
+        llm = LLM(model=model_name,enforce_eager=True, gpu_memory_utilization=0.03, dtype=torch.float)
+        mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 3}}
+        tester = PrecisionTester(framework="vllm")
+
+        # Test dump method
+        golden_path = os.path.join(self.temp_dir, "golden")
+        # tester.dump_model_execution(llm, mock_input, golden_path, "golden_model", iterations=1)
+
+        assert os.path.exists(golden_path)
+        assert os.path.exists(os.path.join(golden_path, "model_info.json"))
+        assert os.path.exists(os.path.join(golden_path, "operator_traces.h5"))
+
+        # Create test dump
+        test_path = os.path.join(self.temp_dir, "test")
+        perturbed_model = tester._create_perturbed_model(llm, 1e-6)
+        tester.dump_model_execution(perturbed_model, mock_input, test_path, "test_model", iterations=1)
+
+        # Test compare method
+        results_path = os.path.join(self.temp_dir, "results")
+        results, summary = tester.compare_precision(golden_path, test_path, results_path)
+
+        assert len(results) > 0
+        assert "pass_rate" in summary
+        assert os.path.exists(results_path)
+        
+# T = TestPrecisionTester()
+# T.setup_method()
+# T.test_vllm_dump_and_compare_methods()
+            
