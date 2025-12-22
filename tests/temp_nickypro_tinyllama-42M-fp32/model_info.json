@@ -34,7 +34,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 0.0001322450116276741,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55404.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006021121585227229
     },
     {
       "iter": 0,
@@ -58,7 +64,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 8.08308832347393e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 56320.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0010013845750022176
     },
     {
       "iter": 0,
@@ -82,9 +94,15 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.008016393054276705,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 7.078514965517587e-05,
+      "memory_efficiency": 0.00030181327807556757
     },
     {
       "iter": 0,
@@ -120,13 +138,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.655502900481224e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0029915385216084684
     },
     {
       "iter": 0,
       "ops_idx": 4,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 0.0009918208234012127,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 8.043947509369051e-05
+    },
+    {
+      "iter": 0,
+      "ops_idx": 5,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 0.0037453160621225834,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 1.3516972454728915e-06,
+      "memory_efficiency": 2.2544974980042782e-05
+    },
+    {
+      "iter": 0,
+      "ops_idx": 6,
       "module_name": "model.layers.0.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -156,11 +338,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 5,
+      "ops_idx": 7,
       "module_name": "model.layers.0.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -180,13 +368,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.0006290916353464127,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.0003006671578294654,
+      "memory_efficiency": 0.0013240916680689054
     },
     {
       "iter": 0,
-      "ops_idx": 6,
+      "ops_idx": 8,
       "module_name": "model.layers.0.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -214,13 +408,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 6.775464862585068e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0023675705696522115
     },
     {
       "iter": 0,
-      "ops_idx": 7,
+      "ops_idx": 9,
       "module_name": "model.layers.0.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -240,13 +440,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.951787069439888e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.010215915601195768,
+      "memory_efficiency": 0.0432424598516606
     },
     {
       "iter": 0,
-      "ops_idx": 8,
+      "ops_idx": 10,
       "module_name": "model.layers.0.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -266,11 +472,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 5.06681390106678e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0063228673496210875
     },
     {
       "iter": 0,
-      "ops_idx": 9,
+      "ops_idx": 11,
       "module_name": "model.layers.0.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -290,13 +502,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00014330726116895676,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.0035471551110939905,
+      "memory_efficiency": 0.015153220600242738
     },
     {
       "iter": 0,
-      "ops_idx": 10,
+      "ops_idx": 12,
       "module_name": "model.layers.1.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -324,13 +542,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.24128957092762e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0037821966494168495
     },
     {
       "iter": 0,
-      "ops_idx": 11,
+      "ops_idx": 13,
       "module_name": "model.layers.1.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -350,13 +574,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.42181795835495e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.006022633684388913,
+      "memory_efficiency": 0.02567926780954172
     },
     {
       "iter": 0,
-      "ops_idx": 12,
+      "ops_idx": 14,
       "module_name": "model.layers.1.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -388,13 +618,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.504108801484108e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.003756271336137194
     },
     {
       "iter": 0,
-      "ops_idx": 13,
+      "ops_idx": 15,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.8187332898378372e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004386654539572373
+    },
+    {
+      "iter": 0,
+      "ops_idx": 16,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.698716267943382e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 8.883638290739991e-05,
+      "memory_efficiency": 0.0014817031229978918
+    },
+    {
+      "iter": 0,
+      "ops_idx": 17,
       "module_name": "model.layers.1.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -424,11 +818,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 14,
+      "ops_idx": 18,
       "module_name": "model.layers.1.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -448,13 +848,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00010463595390319824,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.001807669228006292,
+      "memory_efficiency": 0.007960695743115568
     },
     {
       "iter": 0,
-      "ops_idx": 15,
+      "ops_idx": 19,
       "module_name": "model.layers.1.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -482,13 +888,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.001388490200043e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0032073875556360666
     },
     {
       "iter": 0,
-      "ops_idx": 16,
+      "ops_idx": 20,
       "module_name": "model.layers.1.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -508,13 +920,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.185712456703186e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.014148439336398666,
+      "memory_efficiency": 0.05988825122011212
     },
     {
       "iter": 0,
-      "ops_idx": 17,
+      "ops_idx": 21,
       "module_name": "model.layers.1.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -534,11 +952,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.2377039790153503e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.007559941029459375
     },
     {
       "iter": 0,
-      "ops_idx": 18,
+      "ops_idx": 22,
       "module_name": "model.layers.1.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -558,13 +982,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.805274799466133e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.006512686573791295,
+      "memory_efficiency": 0.02782178203717226
     },
     {
       "iter": 0,
-      "ops_idx": 19,
+      "ops_idx": 23,
       "module_name": "model.layers.2.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -592,13 +1022,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.012696444988251e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.003997658787373347
     },
     {
       "iter": 0,
-      "ops_idx": 20,
+      "ops_idx": 24,
       "module_name": "model.layers.2.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -618,13 +1054,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.756907820701599e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.005815793204868931,
+      "memory_efficiency": 0.024797342667520306
     },
     {
       "iter": 0,
-      "ops_idx": 21,
+      "ops_idx": 25,
       "module_name": "model.layers.2.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -656,13 +1098,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.194304347038269e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004033721300602519
     },
     {
       "iter": 0,
-      "ops_idx": 22,
+      "ops_idx": 26,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.9011087715625763e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004196579786216582
+    },
+    {
+      "iter": 0,
+      "ops_idx": 27,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.001993849873543e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 0.00010121030845978471,
+      "memory_efficiency": 0.0016880879794572462
+    },
+    {
+      "iter": 0,
+      "ops_idx": 28,
       "module_name": "model.layers.2.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -692,11 +1298,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 23,
+      "ops_idx": 29,
       "module_name": "model.layers.2.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -716,13 +1328,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.121932089328766e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.0020735431064562403,
+      "memory_efficiency": 0.00913156318921161
     },
     {
       "iter": 0,
-      "ops_idx": 24,
+      "ops_idx": 30,
       "module_name": "model.layers.2.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -750,13 +1368,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.047721788287163e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0031779467801874195
     },
     {
       "iter": 0,
-      "ops_idx": 25,
+      "ops_idx": 31,
       "module_name": "model.layers.2.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -776,13 +1400,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.616301834583282e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.015366079015781868,
+      "memory_efficiency": 0.06504233989948159
     },
     {
       "iter": 0,
-      "ops_idx": 26,
+      "ops_idx": 32,
       "module_name": "model.layers.2.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -802,11 +1432,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.2248982936143875e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.007582855244132757
     },
     {
       "iter": 0,
-      "ops_idx": 27,
+      "ops_idx": 33,
       "module_name": "model.layers.2.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -826,13 +1462,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.561920210719109e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.00672227515957889,
+      "memory_efficiency": 0.028717131120103347
     },
     {
       "iter": 0,
-      "ops_idx": 28,
+      "ops_idx": 34,
       "module_name": "model.layers.3.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -860,13 +1502,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.868388012051582e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0041467896070388225
     },
     {
       "iter": 0,
-      "ops_idx": 29,
+      "ops_idx": 35,
       "module_name": "model.layers.3.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -886,13 +1534,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.940044790506363e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.006347189475429341,
+      "memory_efficiency": 0.027063106760077272
     },
     {
       "iter": 0,
-      "ops_idx": 30,
+      "ops_idx": 36,
       "module_name": "model.layers.3.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -924,13 +1578,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.247482866048813e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.003983219078078695
     },
     {
       "iter": 0,
-      "ops_idx": 31,
+      "ops_idx": 37,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.9432976841926575e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004105472212021427
+    },
+    {
+      "iter": 0,
+      "ops_idx": 38,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.837390199303627e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 8.672597225384058e-05,
+      "memory_efficiency": 0.0014465035577539268
+    },
+    {
+      "iter": 0,
+      "ops_idx": 39,
       "module_name": "model.layers.3.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -960,11 +1778,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 32,
+      "ops_idx": 40,
       "module_name": "model.layers.3.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -984,13 +1808,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.0001510661095380783,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.001252082247912919,
+      "memory_efficiency": 0.005513976598464424
     },
     {
       "iter": 0,
-      "ops_idx": 33,
+      "ops_idx": 41,
       "module_name": "model.layers.3.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1018,13 +1848,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 9.348616003990173e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0017159108040722061
     },
     {
       "iter": 0,
-      "ops_idx": 34,
+      "ops_idx": 42,
       "module_name": "model.layers.3.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -1044,13 +1880,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.130391895771027e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.01425820884301841,
+      "memory_efficiency": 0.06035288930721469
     },
     {
       "iter": 0,
-      "ops_idx": 35,
+      "ops_idx": 43,
       "module_name": "model.layers.3.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -1070,11 +1912,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.933727905154228e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.006493425011985927
     },
     {
       "iter": 0,
-      "ops_idx": 36,
+      "ops_idx": 44,
       "module_name": "model.layers.3.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1094,13 +1942,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.843412458896637e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.0064810194105724165,
+      "memory_efficiency": 0.027686501933818795
     },
     {
       "iter": 0,
-      "ops_idx": 37,
+      "ops_idx": 45,
       "module_name": "model.layers.4.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1128,13 +1982,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.9667822420597076e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00404393037618313
     },
     {
       "iter": 0,
-      "ops_idx": 38,
+      "ops_idx": 46,
       "module_name": "model.layers.4.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -1154,13 +2014,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.94526019692421e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.00634348883710282,
+      "memory_efficiency": 0.027047328001541898
     },
     {
       "iter": 0,
-      "ops_idx": 39,
+      "ops_idx": 47,
       "module_name": "model.layers.4.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -1192,13 +2058,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.0796585381031036e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0041470761897942025
     },
     {
       "iter": 0,
-      "ops_idx": 40,
+      "ops_idx": 48,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.9103288650512695e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004176325232841219
+    },
+    {
+      "iter": 0,
+      "ops_idx": 49,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.9856025725603104e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 0.00010154305985919482,
+      "memory_efficiency": 0.0016936379441400925
+    },
+    {
+      "iter": 0,
+      "ops_idx": 50,
       "module_name": "model.layers.4.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -1228,11 +2258,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 41,
+      "ops_idx": 51,
       "module_name": "model.layers.4.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1252,13 +2288,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.0843066573143e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.0020821313188673896,
+      "memory_efficiency": 0.009169384348593634
     },
     {
       "iter": 0,
-      "ops_idx": 42,
+      "ops_idx": 52,
       "module_name": "model.layers.4.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1286,13 +2328,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.941597580909729e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0032461953734030918
     },
     {
       "iter": 0,
-      "ops_idx": 43,
+      "ops_idx": 53,
       "module_name": "model.layers.4.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -1312,13 +2360,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.538776844739914e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.013485823877835812,
+      "memory_efficiency": 0.057083497981876674
     },
     {
       "iter": 0,
-      "ops_idx": 44,
+      "ops_idx": 54,
       "module_name": "model.layers.4.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -1338,11 +2392,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.17931005358696e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.007665569620556222
     },
     {
       "iter": 0,
-      "ops_idx": 45,
+      "ops_idx": 55,
       "module_name": "model.layers.4.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1362,13 +2422,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.714703679084778e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.006589145935578586,
+      "memory_efficiency": 0.02814841155852952
     },
     {
       "iter": 0,
-      "ops_idx": 46,
+      "ops_idx": 56,
       "module_name": "model.layers.5.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1396,13 +2462,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.2786897867918015e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0030388963648720975
     },
     {
       "iter": 0,
-      "ops_idx": 47,
+      "ops_idx": 57,
       "module_name": "model.layers.5.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -1422,13 +2494,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.114528074860573e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.006225682529924834,
+      "memory_efficiency": 0.026545026206312657
     },
     {
       "iter": 0,
-      "ops_idx": 48,
+      "ops_idx": 58,
       "module_name": "model.layers.5.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -1460,13 +2538,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.436774179339409e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.003813278319334482
     },
     {
       "iter": 0,
-      "ops_idx": 49,
+      "ops_idx": 59,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.8310733139514923e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004357091865929459
+    },
+    {
+      "iter": 0,
+      "ops_idx": 60,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.016382783651352e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 0.00010091999799328568,
+      "memory_efficiency": 0.0016832458876163507
+    },
+    {
+      "iter": 0,
+      "ops_idx": 61,
       "module_name": "model.layers.5.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -1496,11 +2738,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 50,
+      "ops_idx": 62,
       "module_name": "model.layers.5.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1520,13 +2768,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.788704872131348e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.0021521623124890104,
+      "memory_efficiency": 0.00947779001494702
     },
     {
       "iter": 0,
-      "ops_idx": 51,
+      "ops_idx": 63,
       "module_name": "model.layers.5.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1554,13 +2808,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.0863251090049744e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.003153827343039661
     },
     {
       "iter": 0,
-      "ops_idx": 52,
+      "ops_idx": 64,
       "module_name": "model.layers.5.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -1580,13 +2840,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.361313328146935e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.013810934577901172,
+      "memory_efficiency": 0.058459643492835674
     },
     {
       "iter": 0,
-      "ops_idx": 53,
+      "ops_idx": 65,
       "module_name": "model.layers.5.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -1606,11 +2872,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.066620022058487e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.007877990077234867
     },
     {
       "iter": 0,
-      "ops_idx": 54,
+      "ops_idx": 66,
       "module_name": "model.layers.5.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1630,13 +2902,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.449835538864136e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.006823413500344881,
+      "memory_efficiency": 0.029149187667046095
     },
     {
       "iter": 0,
-      "ops_idx": 55,
+      "ops_idx": 67,
       "module_name": "model.layers.6.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1664,13 +2942,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.8763973861932755e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004138221551150653
     },
     {
       "iter": 0,
-      "ops_idx": 56,
+      "ops_idx": 68,
       "module_name": "model.layers.6.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -1690,13 +2974,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.98316502571106e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.006316722228942614,
+      "memory_efficiency": 0.026933200705193016
     },
     {
       "iter": 0,
-      "ops_idx": 57,
+      "ops_idx": 69,
       "module_name": "model.layers.6.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -1728,13 +3018,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.111696034669876e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004114763018277539
     },
     {
       "iter": 0,
-      "ops_idx": 58,
+      "ops_idx": 70,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.8691644072532654e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004268300108422476
+    },
+    {
+      "iter": 0,
+      "ops_idx": 71,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.960177466273308e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 0.00010206355395586415,
+      "memory_efficiency": 0.0017023192715793333
+    },
+    {
+      "iter": 0,
+      "ops_idx": 72,
       "module_name": "model.layers.6.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -1764,11 +3218,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 59,
+      "ops_idx": 73,
       "module_name": "model.layers.6.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1788,13 +3248,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.210912346839905e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.002303607516729764,
+      "memory_efficiency": 0.01014473127501611
     },
     {
       "iter": 0,
-      "ops_idx": 60,
+      "ops_idx": 74,
       "module_name": "model.layers.6.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1822,13 +3288,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.549603909254074e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0035258874232414494
     },
     {
       "iter": 0,
-      "ops_idx": 61,
+      "ops_idx": 75,
       "module_name": "model.layers.6.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -1848,13 +3320,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.499094888567924e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.015643196248958213,
+      "memory_efficiency": 0.06621533616311838
     },
     {
       "iter": 0,
-      "ops_idx": 62,
+      "ops_idx": 76,
       "module_name": "model.layers.6.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -1874,11 +3352,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.1176099330186844e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.007780433966015504
     },
     {
       "iter": 0,
-      "ops_idx": 63,
+      "ops_idx": 77,
       "module_name": "model.layers.6.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -1898,13 +3382,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.272511720657349e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.00698978706996706,
+      "memory_efficiency": 0.02985992495469664
     },
     {
       "iter": 0,
-      "ops_idx": 64,
+      "ops_idx": 78,
       "module_name": "model.layers.7.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -1932,13 +3422,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.225177690386772e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0037966193092581263
     },
     {
       "iter": 0,
-      "ops_idx": 65,
+      "ops_idx": 79,
       "module_name": "model.layers.7.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -1958,13 +3454,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.977530524134636e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 84934656.0,
+      "memory_byte": 1683456.0,
+      "computes_efficiency": 0.006320686746942427,
+      "memory_efficiency": 0.02695010459222783
     },
     {
       "iter": 0,
-      "ops_idx": 66,
+      "ops_idx": 80,
       "module_name": "model.layers.7.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -1996,13 +3498,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.035281017422676e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 117720.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004192683164520697
     },
     {
       "iter": 0,
-      "ops_idx": 67,
+      "ops_idx": 81,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.7359387129545212e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 55512.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004595873450255591
+    },
+    {
+      "iter": 0,
+      "ops_idx": 82,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          27,
+          8,
+          64
+        ],
+        [
+          8,
+          27
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.920409992337227e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 757760.0,
+      "memory_byte": 58752.0,
+      "computes_efficiency": 0.0001028884465416618,
+      "memory_efficiency": 0.0017160776651621542
+    },
+    {
+      "iter": 0,
+      "ops_idx": 83,
       "module_name": "model.layers.7.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -2032,11 +3698,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 0,
-      "ops_idx": 68,
+      "ops_idx": 84,
       "module_name": "model.layers.7.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2056,13 +3728,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.17389988899231e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 28311552.0,
+      "memory_byte": 579584.0,
+      "computes_efficiency": 0.0020617970143848264,
+      "memory_efficiency": 0.009079835216138638
     },
     {
       "iter": 0,
-      "ops_idx": 69,
+      "ops_idx": 85,
       "module_name": "model.layers.7.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2090,13 +3768,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.881015047430992e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0032864867345188953
     },
     {
       "iter": 0,
-      "ops_idx": 70,
+      "ops_idx": 86,
       "module_name": "model.layers.7.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -2116,13 +3800,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.13719055056572e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 152174592.0,
+      "memory_byte": 2994304.0,
+      "computes_efficiency": 0.014244626938594318,
+      "memory_efficiency": 0.06029539911449039
     },
     {
       "iter": 0,
-      "ops_idx": 71,
+      "ops_idx": 87,
       "module_name": "model.layers.7.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -2142,11 +3832,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.038400948047638e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 222912.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.007933038990878199
     },
     {
       "iter": 0,
-      "ops_idx": 72,
+      "ops_idx": 88,
       "module_name": "model.layers.7.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2166,13 +3862,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.708091288805008e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 76087296.0,
+      "memory_byte": 1510976.0,
+      "computes_efficiency": 0.006594798437982091,
+      "memory_efficiency": 0.0281725586886045
     },
     {
       "iter": 0,
-      "ops_idx": 73,
+      "ops_idx": 89,
       "module_name": "model.norm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2200,13 +3902,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.979867324233055e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 111616.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.004030634666310226
     },
     {
       "iter": 0,
-      "ops_idx": 74,
+      "ops_idx": 90,
       "module_name": "logits_processor",
       "operator_name": "LogitsProcessor",
       "input_shapes": [
@@ -2228,7 +3936,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 0.00022782711312174797,
+      "ops_type": "TensorCore",
+      "computes_ops": 262144000.0,
+      "memory_byte": 33028096.0,
+      "computes_efficiency": 0.007687245313072858,
+      "memory_efficiency": 0.20835009688641268
     },
     {
       "iter": 1,
@@ -2251,7 +3965,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 0.00014681974425911903,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8208.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 8.034677695913991e-05
     },
     {
       "iter": 1,
@@ -2275,7 +3995,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 6.038416177034378e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 9216.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0002193486670971386
     },
     {
       "iter": 1,
@@ -2299,9 +4025,15 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.408639743924141e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0008934917464133856,
+      "memory_efficiency": 0.02427618337724653
     },
     {
       "iter": 1,
@@ -2337,13 +4069,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.7884415835142136e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005234411513574701
     },
     {
       "iter": 1,
       "ops_idx": 4,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.9348226487636566e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006108822618071157
+    },
+    {
+      "iter": 1,
+      "ops_idx": 5,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 0.018789683934301138,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 4.514798712442203e-08,
+      "memory_efficiency": 3.0448539040632987e-06
+    },
+    {
+      "iter": 1,
+      "ops_idx": 6,
       "module_name": "model.layers.0.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -2373,11 +4269,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 5,
+      "ops_idx": 7,
       "module_name": "model.layers.0.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2397,13 +4299,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00011919485405087471,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0002350924185755282,
+      "memory_efficiency": 0.006420389409012751
     },
     {
       "iter": 1,
-      "ops_idx": 6,
+      "ops_idx": 8,
       "module_name": "model.layers.0.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2431,13 +4339,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 6.321165710687637e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00039579224267842066
     },
     {
       "iter": 1,
-      "ops_idx": 7,
+      "ops_idx": 9,
       "module_name": "model.layers.0.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -2457,13 +4371,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.98138789832592e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.001887105500531985,
+      "memory_efficiency": 0.05121429298579223
     },
     {
       "iter": 1,
-      "ops_idx": 8,
+      "ops_idx": 10,
       "module_name": "model.layers.0.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -2483,11 +4403,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.35560941696167e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0010896733338479634
     },
     {
       "iter": 1,
-      "ops_idx": 9,
+      "ops_idx": 11,
       "module_name": "model.layers.0.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2507,13 +4433,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00011067977175116539,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0006804188681682781,
+      "memory_efficiency": 0.018492530599223622
     },
     {
       "iter": 1,
-      "ops_idx": 10,
+      "ops_idx": 12,
       "module_name": "model.layers.1.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2541,13 +4473,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.917422145605087e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006386517102278117
     },
     {
       "iter": 1,
-      "ops_idx": 11,
+      "ops_idx": 13,
       "module_name": "model.layers.1.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -2567,13 +4505,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.044756785035133e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0011933047815122328,
+      "memory_efficiency": 0.032422107777964004
     },
     {
       "iter": 1,
-      "ops_idx": 12,
+      "ops_idx": 14,
       "module_name": "model.layers.1.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -2605,13 +4549,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.1851773858070374e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.000598891550972896
     },
     {
       "iter": 1,
-      "ops_idx": 13,
+      "ops_idx": 15,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.8857885152101517e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006267663772152421
+    },
+    {
+      "iter": 1,
+      "ops_idx": 16,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.182204768061638e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.6369797148233746e-05,
+      "memory_efficiency": 0.0011040058246264918
+    },
+    {
+      "iter": 1,
+      "ops_idx": 17,
       "module_name": "model.layers.1.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -2641,11 +4749,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 14,
+      "ops_idx": 18,
       "module_name": "model.layers.1.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2665,13 +4779,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.605513721704483e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0003256261906816992,
+      "memory_efficiency": 0.008892872677977429
     },
     {
       "iter": 1,
-      "ops_idx": 15,
+      "ops_idx": 19,
       "module_name": "model.layers.1.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2699,13 +4819,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.634913057088852e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005397875477186177
     },
     {
       "iter": 1,
-      "ops_idx": 16,
+      "ops_idx": 20,
       "module_name": "model.layers.1.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -2725,13 +4851,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.523355841636658e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.002308891523083217,
+      "memory_efficiency": 0.06266117442944294
     },
     {
       "iter": 1,
-      "ops_idx": 17,
+      "ops_idx": 21,
       "module_name": "model.layers.1.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -2751,11 +4883,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.5511871576309204e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.001042846903441957
     },
     {
       "iter": 1,
-      "ops_idx": 18,
+      "ops_idx": 22,
       "module_name": "model.layers.1.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2775,13 +4913,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.562199607491493e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0009958558214920277,
+      "memory_efficiency": 0.027065525535664256
     },
     {
       "iter": 1,
-      "ops_idx": 19,
+      "ops_idx": 23,
       "module_name": "model.layers.2.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2809,13 +4953,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.724498674273491e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006717329154273395
     },
     {
       "iter": 1,
-      "ops_idx": 20,
+      "ops_idx": 24,
       "module_name": "model.layers.2.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -2835,13 +4985,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.295282557606697e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.001152325751578707,
+      "memory_efficiency": 0.03130870695553751
     },
     {
       "iter": 1,
-      "ops_idx": 21,
+      "ops_idx": 25,
       "module_name": "model.layers.2.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -2873,13 +5029,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.970600664615631e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006312564741197168
     },
     {
       "iter": 1,
-      "ops_idx": 22,
+      "ops_idx": 26,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.7865095287561417e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006615967151853423
+    },
+    {
+      "iter": 1,
+      "ops_idx": 27,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 6.324611604213715e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.3412940768925702e-05,
+      "memory_efficiency": 0.0009045906067236666
+    },
+    {
+      "iter": 1,
+      "ops_idx": 28,
       "module_name": "model.layers.2.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -2909,11 +5229,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 23,
+      "ops_idx": 29,
       "module_name": "model.layers.2.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -2933,13 +5259,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.0001151449978351593,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00024336104083907349,
+      "memory_efficiency": 0.006646206026705753
     },
     {
       "iter": 1,
-      "ops_idx": 24,
+      "ops_idx": 30,
       "module_name": "model.layers.2.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -2967,13 +5299,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 6.406521424651146e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00039051900198885654
     },
     {
       "iter": 1,
-      "ops_idx": 25,
+      "ops_idx": 31,
       "module_name": "model.layers.2.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -2993,13 +5331,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.531233131885529e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.001999901044231702,
+      "memory_efficiency": 0.054275459423440024
     },
     {
       "iter": 1,
-      "ops_idx": 26,
+      "ops_idx": 32,
       "module_name": "model.layers.2.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -3019,11 +5363,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.174606874585152e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.001136919373945087
     },
     {
       "iter": 1,
-      "ops_idx": 27,
+      "ops_idx": 33,
       "module_name": "model.layers.2.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3043,13 +5393,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.994426414370537e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.000942013862166257,
+      "memory_efficiency": 0.025602200329773988
     },
     {
       "iter": 1,
-      "ops_idx": 28,
+      "ops_idx": 34,
       "module_name": "model.layers.3.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3077,13 +5433,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.9359088987112045e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006356519973808891
     },
     {
       "iter": 1,
-      "ops_idx": 29,
+      "ops_idx": 35,
       "module_name": "model.layers.3.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -3103,13 +5465,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.324797868728638e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013291400184877354,
+      "memory_efficiency": 0.03611275308626814
     },
     {
       "iter": 1,
-      "ops_idx": 30,
+      "ops_idx": 36,
       "module_name": "model.layers.3.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -3141,13 +5509,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.055304452776909e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006180713198897655
     },
     {
       "iter": 1,
-      "ops_idx": 31,
+      "ops_idx": 37,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 2.071307972073555e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005706292119800737
+    },
+    {
+      "iter": 1,
+      "ops_idx": 38,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.397899076342583e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.5715677457841155e-05,
+      "memory_efficiency": 0.0010598909256050208
+    },
+    {
+      "iter": 1,
+      "ops_idx": 39,
       "module_name": "model.layers.3.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -3177,11 +5709,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 32,
+      "ops_idx": 40,
       "module_name": "model.layers.3.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3201,13 +5739,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00011093588545918465,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00025259460817921687,
+      "memory_efficiency": 0.006898375357887383
     },
     {
       "iter": 1,
-      "ops_idx": 33,
+      "ops_idx": 41,
       "module_name": "model.layers.3.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3235,13 +5779,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 6.363540887832642e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0003931566398447554
     },
     {
       "iter": 1,
-      "ops_idx": 34,
+      "ops_idx": 42,
       "module_name": "model.layers.3.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -3261,13 +5811,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.741704419255257e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0022341117420977205,
+      "memory_efficiency": 0.060631720532072095
     },
     {
       "iter": 1,
-      "ops_idx": 35,
+      "ops_idx": 43,
       "module_name": "model.layers.3.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -3287,11 +5843,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.09628264605999e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0011586581894892755
     },
     {
       "iter": 1,
-      "ops_idx": 36,
+      "ops_idx": 44,
       "module_name": "model.layers.3.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3311,13 +5873,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.482486009597778e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.000887812899883843,
+      "memory_efficiency": 0.024129118085283643
     },
     {
       "iter": 1,
-      "ops_idx": 37,
+      "ops_idx": 45,
       "module_name": "model.layers.4.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3345,13 +5913,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.83453443646431e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006524568743427111
     },
     {
       "iter": 1,
-      "ops_idx": 38,
+      "ops_idx": 46,
       "module_name": "model.layers.4.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -3371,13 +5945,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.345799192786217e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013247412502005369,
+      "memory_efficiency": 0.035993238489739746
     },
     {
       "iter": 1,
-      "ops_idx": 39,
+      "ops_idx": 47,
       "module_name": "model.layers.4.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -3409,13 +5989,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 0.00010239006951451302,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0002447959443300695
     },
     {
       "iter": 1,
-      "ops_idx": 40,
+      "ops_idx": 48,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.8693041056394577e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006322935001889659
+    },
+    {
+      "iter": 1,
+      "ops_idx": 49,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.860906094312668e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.44741511753785e-05,
+      "memory_efficiency": 0.0009761603677456928
+    },
+    {
+      "iter": 1,
+      "ops_idx": 50,
       "module_name": "model.layers.4.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -3445,11 +6189,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 41,
+      "ops_idx": 51,
       "module_name": "model.layers.4.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3469,13 +6219,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.449563756585121e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00033163613327065065,
+      "memory_efficiency": 0.009057004605245353
     },
     {
       "iter": 1,
-      "ops_idx": 42,
+      "ops_idx": 52,
       "module_name": "model.layers.4.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3503,13 +6259,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.573911428451538e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005469866201195725
     },
     {
       "iter": 1,
-      "ops_idx": 43,
+      "ops_idx": 53,
       "module_name": "model.layers.4.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -3529,13 +6291,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.337463855743408e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0023766164742952157,
+      "memory_efficiency": 0.06449916679014668
     },
     {
       "iter": 1,
-      "ops_idx": 44,
+      "ops_idx": 54,
       "module_name": "model.layers.4.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -3555,11 +6323,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.948109224438667e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.001202142890308464
     },
     {
       "iter": 1,
-      "ops_idx": 45,
+      "ops_idx": 55,
       "module_name": "model.layers.4.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3579,13 +6353,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.267482578754425e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.001036240599244181,
+      "memory_efficiency": 0.02816310935243143
     },
     {
       "iter": 1,
-      "ops_idx": 46,
+      "ops_idx": 56,
       "module_name": "model.layers.5.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3613,13 +6393,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.799004480242729e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006585589372127146
     },
     {
       "iter": 1,
-      "ops_idx": 47,
+      "ops_idx": 57,
       "module_name": "model.layers.5.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -3639,13 +6425,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.172806024551392e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013618671836985376,
+      "memory_efficiency": 0.037001950627559475
     },
     {
       "iter": 1,
-      "ops_idx": 48,
+      "ops_idx": 58,
       "module_name": "model.layers.5.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -3677,13 +6469,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.9043836295604706e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006419623719108843
     },
     {
       "iter": 1,
-      "ops_idx": 49,
+      "ops_idx": 59,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.767696812748909e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006686377592288311
+    },
+    {
+      "iter": 1,
+      "ops_idx": 60,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.852795973420143e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.7480982365304607e-05,
+      "memory_efficiency": 0.0011789459684032548
+    },
+    {
+      "iter": 1,
+      "ops_idx": 61,
       "module_name": "model.layers.5.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -3713,11 +6669,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 50,
+      "ops_idx": 62,
       "module_name": "model.layers.5.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3737,13 +6699,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.476378232240677e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0003748045597765199,
+      "memory_efficiency": 0.010235937171516031
     },
     {
       "iter": 1,
-      "ops_idx": 51,
+      "ops_idx": 63,
       "module_name": "model.layers.5.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3771,13 +6739,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.242779687047005e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005896767066678179
     },
     {
       "iter": 1,
-      "ops_idx": 52,
+      "ops_idx": 64,
       "module_name": "model.layers.5.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -3797,13 +6771,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.08246773481369e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.002476251689524435,
+      "memory_efficiency": 0.06720317411936765
     },
     {
       "iter": 1,
-      "ops_idx": 53,
+      "ops_idx": 65,
       "module_name": "model.layers.5.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -3823,11 +6803,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.992486745119095e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0011887807617952729
     },
     {
       "iter": 1,
-      "ops_idx": 54,
+      "ops_idx": 66,
       "module_name": "model.layers.5.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -3847,13 +6833,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.891880184412003e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0010927149487361038,
+      "memory_efficiency": 0.02969797807066978
     },
     {
       "iter": 1,
-      "ops_idx": 55,
+      "ops_idx": 67,
       "module_name": "model.layers.6.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -3881,13 +6873,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.797793760895729e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006587688828012911
     },
     {
       "iter": 1,
-      "ops_idx": 56,
+      "ops_idx": 68,
       "module_name": "model.layers.6.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -3907,13 +6905,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.120605394244194e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013734821009827993,
+      "memory_efficiency": 0.03731752809431968
     },
     {
       "iter": 1,
-      "ops_idx": 57,
+      "ops_idx": 69,
       "module_name": "model.layers.6.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -3945,13 +6949,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.671599552035332e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006826636021058507
     },
     {
       "iter": 1,
-      "ops_idx": 58,
+      "ops_idx": 70,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.664506271481514e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0007100897462046624
+    },
+    {
+      "iter": 1,
+      "ops_idx": 71,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.788301885128021e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.7716435360363802e-05,
+      "memory_efficiency": 0.001194825302497456
+    },
+    {
+      "iter": 1,
+      "ops_idx": 72,
       "module_name": "model.layers.6.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -3981,11 +7149,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 59,
+      "ops_idx": 73,
       "module_name": "model.layers.6.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4005,13 +7179,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 9.425962343811989e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00029728324279773035,
+      "memory_efficiency": 0.008118824907670573
     },
     {
       "iter": 1,
-      "ops_idx": 60,
+      "ops_idx": 74,
       "module_name": "model.layers.6.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4039,13 +7219,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.705507308244705e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005316893990561592
     },
     {
       "iter": 1,
-      "ops_idx": 61,
+      "ops_idx": 75,
       "module_name": "model.layers.6.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -4065,13 +7251,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.574857980012894e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0022908055277538826,
+      "memory_efficiency": 0.06217033729104496
     },
     {
       "iter": 1,
-      "ops_idx": 62,
+      "ops_idx": 76,
       "module_name": "model.layers.6.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -4091,11 +7283,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.8125086575746536e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0012448998443296705
     },
     {
       "iter": 1,
-      "ops_idx": 63,
+      "ops_idx": 77,
       "module_name": "model.layers.6.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4115,13 +7313,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.1702990680933e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0010502854108158854,
+      "memory_efficiency": 0.02854482144170559
     },
     {
       "iter": 1,
-      "ops_idx": 64,
+      "ops_idx": 78,
       "module_name": "model.layers.7.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4149,13 +7353,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.3928233683109283e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00046392551398519036
     },
     {
       "iter": 1,
-      "ops_idx": 65,
+      "ops_idx": 79,
       "module_name": "model.layers.7.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -4175,13 +7385,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.606103852391243e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0012725415984991234,
+      "memory_efficiency": 0.03457497321530528
     },
     {
       "iter": 1,
-      "ops_idx": 66,
+      "ops_idx": 80,
       "module_name": "model.layers.7.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -4213,13 +7429,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.959898069500923e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005053465495783614
     },
     {
       "iter": 1,
-      "ops_idx": 67,
+      "ops_idx": 81,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.740502193570137e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006790849447009032
+    },
+    {
+      "iter": 1,
+      "ops_idx": 82,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.8907939344644547e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 126976.0,
+      "memory_byte": 39808.0,
+      "computes_efficiency": 1.7345167670219547e-05,
+      "memory_efficiency": 0.0011697864038047435
+    },
+    {
+      "iter": 1,
+      "ops_idx": 83,
       "module_name": "model.layers.7.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -4249,11 +7629,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 1,
-      "ops_idx": 68,
+      "ops_idx": 84,
       "module_name": "model.layers.7.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4273,13 +7659,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00010008830577135086,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0002799708348005442,
+      "memory_efficiency": 0.00764602190694798
     },
     {
       "iter": 1,
-      "ops_idx": 69,
+      "ops_idx": 85,
       "module_name": "model.layers.7.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4307,13 +7699,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.406886339187622e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00046271887293841197
     },
     {
       "iter": 1,
-      "ops_idx": 70,
+      "ops_idx": 86,
       "module_name": "model.layers.7.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -4333,13 +7731,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.750645115971565e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0022311528374044224,
+      "memory_efficiency": 0.06055141860309309
     },
     {
       "iter": 1,
-      "ops_idx": 71,
+      "ops_idx": 87,
       "module_name": "model.layers.7.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -4359,11 +7763,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.95248644053936e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.001200811566521791
     },
     {
       "iter": 1,
-      "ops_idx": 72,
+      "ops_idx": 88,
       "module_name": "model.layers.7.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4383,13 +7793,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.660873234272003e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0009830289931851057,
+      "memory_efficiency": 0.026716915986379857
     },
     {
       "iter": 1,
-      "ops_idx": 73,
+      "ops_idx": 89,
       "module_name": "model.norm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4417,13 +7833,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.980938345193863e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006284619695242121
     },
     {
       "iter": 1,
-      "ops_idx": 74,
+      "ops_idx": 90,
       "module_name": "logits_processor",
       "operator_name": "LogitsProcessor",
       "input_shapes": [
@@ -4445,7 +7867,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 7.69798643887043e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 262144000.0,
+      "memory_byte": 33028096.0,
+      "computes_efficiency": 0.022750922224189635,
+      "memory_efficiency": 0.6166261978922519
     },
     {
       "iter": 2,
@@ -4468,7 +7896,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 8.059293031692505e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8208.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00014637131568236397
     },
     {
       "iter": 2,
@@ -4492,7 +7926,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 5.822302773594856e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 9216.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00022749049496656365
     },
     {
       "iter": 2,
@@ -4516,9 +7956,15 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.77137465775013e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0010817316532010987,
+      "memory_efficiency": 0.029390664304952897
     },
     {
       "iter": 2,
@@ -4554,13 +8000,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.159938544034958e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006025250972221104
     },
     {
       "iter": 2,
       "ops_idx": 4,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.7439015209674835e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006777612277192432
+    },
+    {
+      "iter": 2,
+      "ops_idx": 5,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 7.33877532184124e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 1.3050904926988468e-05,
+      "memory_efficiency": 0.000869824083489017
+    },
+    {
+      "iter": 2,
+      "ops_idx": 6,
       "module_name": "model.layers.0.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -4590,11 +8200,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 5,
+      "ops_idx": 7,
       "module_name": "model.layers.0.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4614,13 +8230,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00012923823669552803,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00021682287871656528,
+      "memory_efficiency": 0.005921447074212033
     },
     {
       "iter": 2,
-      "ops_idx": 6,
+      "ops_idx": 8,
       "module_name": "model.layers.0.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4648,13 +8270,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 7.033534348011017e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00035570571339890955
     },
     {
       "iter": 2,
-      "ops_idx": 7,
+      "ops_idx": 9,
       "module_name": "model.layers.0.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -4674,13 +8302,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.795589044690132e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.001932082478753721,
+      "memory_efficiency": 0.05243492645838516
     },
     {
       "iter": 2,
-      "ops_idx": 8,
+      "ops_idx": 10,
       "module_name": "model.layers.0.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -4700,11 +8334,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.4658780097961426e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0010627678194319644
     },
     {
       "iter": 2,
-      "ops_idx": 9,
+      "ops_idx": 11,
       "module_name": "model.layers.0.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4724,13 +8364,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.831491529941559e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0009616125451471093,
+      "memory_efficiency": 0.026134856406322206
     },
     {
       "iter": 2,
-      "ops_idx": 10,
+      "ops_idx": 12,
       "module_name": "model.layers.1.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4758,13 +8404,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.059774801135063e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006162579146694298
     },
     {
       "iter": 2,
-      "ops_idx": 11,
+      "ops_idx": 13,
       "module_name": "model.layers.1.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -4784,13 +8436,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.302911788225174e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013337552925741254,
+      "memory_efficiency": 0.03623815014842032
     },
     {
       "iter": 2,
-      "ops_idx": 12,
+      "ops_idx": 14,
       "module_name": "model.layers.1.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -4822,13 +8480,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.327110946178436e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005792473100086092
     },
     {
       "iter": 2,
-      "ops_idx": 13,
+      "ops_idx": 15,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.907162368297577e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006197421129525749
+    },
+    {
+      "iter": 2,
+      "ops_idx": 16,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.3958967328071594e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 1.7750091180127513e-05,
+      "memory_efficiency": 0.0011830181032637093
+    },
+    {
+      "iter": 2,
+      "ops_idx": 17,
       "module_name": "model.layers.1.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -4858,11 +8680,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 14,
+      "ops_idx": 18,
       "module_name": "model.layers.1.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4882,13 +8710,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.034426718950272e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0003487716983525912,
+      "memory_efficiency": 0.009524978014324873
     },
     {
       "iter": 2,
-      "ops_idx": 15,
+      "ops_idx": 19,
       "module_name": "model.layers.1.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -4916,13 +8750,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.666764289140701e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005361034322639136
     },
     {
       "iter": 2,
-      "ops_idx": 16,
+      "ops_idx": 20,
       "module_name": "model.layers.1.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -4942,13 +8782,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.266217678785324e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0024036383312700214,
+      "memory_efficiency": 0.0652325149255518
     },
     {
       "iter": 2,
-      "ops_idx": 17,
+      "ops_idx": 21,
       "module_name": "model.layers.1.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -4968,11 +8814,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.8463156670331955e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0012339578560854624
     },
     {
       "iter": 2,
-      "ops_idx": 18,
+      "ops_idx": 22,
       "module_name": "model.layers.1.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -4992,13 +8844,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.491419091820717e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0010052648784030088,
+      "memory_efficiency": 0.027321246358492937
     },
     {
       "iter": 2,
-      "ops_idx": 19,
+      "ops_idx": 23,
       "module_name": "model.layers.2.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5026,13 +8884,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.7629157304763794e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006648749353359184
     },
     {
       "iter": 2,
-      "ops_idx": 20,
+      "ops_idx": 24,
       "module_name": "model.layers.2.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -5052,13 +8916,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.515393033623695e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0012902586095405002,
+      "memory_efficiency": 0.035056344655683615
     },
     {
       "iter": 2,
-      "ops_idx": 21,
+      "ops_idx": 25,
       "module_name": "model.layers.2.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -5090,13 +8960,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.027504473924637e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006223375770058968
     },
     {
       "iter": 2,
-      "ops_idx": 22,
+      "ops_idx": 26,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.8564052879810333e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006366868504009848
+    },
+    {
+      "iter": 2,
+      "ops_idx": 27,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.332473665475845e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 1.796120618953539e-05,
+      "memory_efficiency": 0.0011970886156608413
+    },
+    {
+      "iter": 2,
+      "ops_idx": 28,
       "module_name": "model.layers.2.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -5126,11 +9160,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 23,
+      "ops_idx": 29,
       "module_name": "model.layers.2.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5150,13 +9190,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.961884304881096e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0003126776196532144,
+      "memory_efficiency": 0.008539246351799564
     },
     {
       "iter": 2,
-      "ops_idx": 24,
+      "ops_idx": 30,
       "module_name": "model.layers.2.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5184,13 +9230,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 5.0961971282958984e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0004909284884377275
     },
     {
       "iter": 2,
-      "ops_idx": 25,
+      "ops_idx": 31,
       "module_name": "model.layers.2.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -5210,13 +9262,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.385426968336105e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.002358764900060395,
+      "memory_efficiency": 0.06401469162282719
     },
     {
       "iter": 2,
-      "ops_idx": 26,
+      "ops_idx": 32,
       "module_name": "model.layers.2.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -5236,11 +9294,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.92179936170578e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0012102076104821076
     },
     {
       "iter": 2,
-      "ops_idx": 27,
+      "ops_idx": 33,
       "module_name": "model.layers.2.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5260,13 +9324,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.134675979614258e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.001055529434542351,
+      "memory_efficiency": 0.028687344340116362
     },
     {
       "iter": 2,
-      "ops_idx": 28,
+      "ops_idx": 34,
       "module_name": "model.layers.3.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5294,13 +9364,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.7218909710645676e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006722035579294218
     },
     {
       "iter": 2,
-      "ops_idx": 29,
+      "ops_idx": 35,
       "module_name": "model.layers.3.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -5320,13 +9396,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.105005741119385e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013769916544962638,
+      "memory_efficiency": 0.037412882712878966
     },
     {
       "iter": 2,
-      "ops_idx": 30,
+      "ops_idx": 36,
       "module_name": "model.layers.3.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -5358,13 +9440,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.9078760892152786e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006413886516514342
     },
     {
       "iter": 2,
-      "ops_idx": 31,
+      "ops_idx": 37,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.7927028238773346e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006593110805258886
+    },
+    {
+      "iter": 2,
+      "ops_idx": 38,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.9612950533628464e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 1.9304971378583815e-05,
+      "memory_efficiency": 0.0012866486370177823
+    },
+    {
+      "iter": 2,
+      "ops_idx": 39,
       "module_name": "model.layers.3.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -5394,11 +9640,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 32,
+      "ops_idx": 40,
       "module_name": "model.layers.3.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5418,13 +9670,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.527887985110283e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0003285902273752116,
+      "memory_efficiency": 0.008973820714967565
     },
     {
       "iter": 2,
-      "ops_idx": 33,
+      "ops_idx": 41,
       "module_name": "model.layers.3.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5452,13 +9710,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.4696033000946045e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005597517687804727
     },
     {
       "iter": 2,
-      "ops_idx": 34,
+      "ops_idx": 42,
       "module_name": "model.layers.3.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -5478,13 +9742,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.144307553768158e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.002451329278849863,
+      "memory_efficiency": 0.06652680300930519
     },
     {
       "iter": 2,
-      "ops_idx": 35,
+      "ops_idx": 43,
       "module_name": "model.layers.3.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -5504,11 +9774,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.1445717215538025e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.001145158475515742
     },
     {
       "iter": 2,
-      "ops_idx": 36,
+      "ops_idx": 44,
       "module_name": "model.layers.3.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5528,13 +9804,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.535098120570183e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0009994376160605682,
+      "memory_efficiency": 0.027162872109602127
     },
     {
       "iter": 2,
-      "ops_idx": 37,
+      "ops_idx": 45,
       "module_name": "model.layers.4.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5562,13 +9844,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.149600863456726e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006029178312081974
     },
     {
       "iter": 2,
-      "ops_idx": 38,
+      "ops_idx": 46,
       "module_name": "model.layers.4.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -5588,13 +9876,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.208987906575203e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013539311209272607,
+      "memory_efficiency": 0.03678632768990816
     },
     {
       "iter": 2,
-      "ops_idx": 39,
+      "ops_idx": 47,
       "module_name": "model.layers.4.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -5626,13 +9920,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.9618927985429764e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006326439162120804
     },
     {
       "iter": 2,
-      "ops_idx": 40,
+      "ops_idx": 48,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.7825979739427567e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.000663048456886854
+    },
+    {
+      "iter": 2,
+      "ops_idx": 49,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.7081150114536285e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 2.0343100959274976e-05,
+      "memory_efficiency": 0.0013558384837080448
+    },
+    {
+      "iter": 2,
+      "ops_idx": 50,
       "module_name": "model.layers.4.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -5662,11 +10120,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 41,
+      "ops_idx": 51,
       "module_name": "model.layers.4.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5686,13 +10150,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.804390043020248e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00035905184602655983,
+      "memory_efficiency": 0.009805729523237657
     },
     {
       "iter": 2,
-      "ops_idx": 42,
+      "ops_idx": 52,
       "module_name": "model.layers.4.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5720,13 +10190,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.699919372797012e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005323215473558396
     },
     {
       "iter": 2,
-      "ops_idx": 43,
+      "ops_idx": 53,
       "module_name": "model.layers.4.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -5746,13 +10222,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.904499605298042e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0021814355660550585,
+      "memory_efficiency": 0.05920213797165905
     },
     {
       "iter": 2,
-      "ops_idx": 44,
+      "ops_idx": 54,
       "module_name": "model.layers.4.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -5772,11 +10254,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 3.795698285102844e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0012504132514820285
     },
     {
       "iter": 2,
-      "ops_idx": 45,
+      "ops_idx": 55,
       "module_name": "model.layers.4.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5796,13 +10284,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 7.121637463569641e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0010574619307608466,
+      "memory_efficiency": 0.02873986602510376
     },
     {
       "iter": 2,
-      "ops_idx": 46,
+      "ops_idx": 56,
       "module_name": "model.layers.5.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5830,13 +10324,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.7422869354486465e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006685399586216001
     },
     {
       "iter": 2,
-      "ops_idx": 47,
+      "ops_idx": 57,
       "module_name": "model.layers.5.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -5856,13 +10356,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.260117515921593e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0013428728669697485,
+      "memory_efficiency": 0.03648587477360274
     },
     {
       "iter": 2,
-      "ops_idx": 48,
+      "ops_idx": 58,
       "module_name": "model.layers.5.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -5894,13 +10400,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.8044992834329605e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006588166244628586
     },
     {
       "iter": 2,
-      "ops_idx": 49,
+      "ops_idx": 59,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.7440877854824066e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006776888443980792
+    },
+    {
+      "iter": 2,
+      "ops_idx": 60,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 5.3524039685726166e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 1.7894325534517022e-05,
+      "memory_efficiency": 0.001192631115987068
+    },
+    {
+      "iter": 2,
+      "ops_idx": 61,
       "module_name": "model.layers.5.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -5930,11 +10600,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 50,
+      "ops_idx": 62,
       "module_name": "model.layers.5.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -5954,13 +10630,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.59629362821579e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00032597544630863566,
+      "memory_efficiency": 0.008902410872113199
     },
     {
       "iter": 2,
-      "ops_idx": 51,
+      "ops_idx": 63,
       "module_name": "model.layers.5.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -5988,13 +10670,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.4927000999450684e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005568741062875715
     },
     {
       "iter": 2,
-      "ops_idx": 52,
+      "ops_idx": 64,
       "module_name": "model.layers.5.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -6014,13 +10702,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.151385605335236e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.002448508672866629,
+      "memory_efficiency": 0.06645025437904468
     },
     {
       "iter": 2,
-      "ops_idx": 53,
+      "ops_idx": 65,
       "module_name": "model.layers.5.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -6040,11 +10734,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.705926403403282e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0010085562389772619
     },
     {
       "iter": 2,
-      "ops_idx": 54,
+      "ops_idx": 66,
       "module_name": "model.layers.5.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -6064,13 +10764,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.884662434458733e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0010938605304324123,
+      "memory_efficiency": 0.029729112869488514
     },
     {
       "iter": 2,
-      "ops_idx": 55,
+      "ops_idx": 67,
       "module_name": "model.layers.6.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -6098,13 +10804,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.724824637174606e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006716741314492424
     },
     {
       "iter": 2,
-      "ops_idx": 56,
+      "ops_idx": 68,
       "module_name": "model.layers.6.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -6124,13 +10836,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.051594391465187e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.001389144977731697,
+      "memory_efficiency": 0.03774308867694148
     },
     {
       "iter": 2,
-      "ops_idx": 57,
+      "ops_idx": 69,
       "module_name": "model.layers.6.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -6162,13 +10880,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.7748366594314575e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006639935980859568
     },
     {
       "iter": 2,
-      "ops_idx": 58,
+      "ops_idx": 70,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.6873236745595932e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0007004873182857916
+    },
+    {
+      "iter": 2,
+      "ops_idx": 71,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.689907655119896e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 2.0422077799617292e-05,
+      "memory_efficiency": 0.0013611021767739222
+    },
+    {
+      "iter": 2,
+      "ops_idx": 72,
       "module_name": "model.layers.6.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -6198,11 +11080,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 59,
+      "ops_idx": 73,
       "module_name": "model.layers.6.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -6222,13 +11110,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.961791172623634e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.0003126808690452182,
+      "memory_efficiency": 0.008539335092908839
     },
     {
       "iter": 2,
-      "ops_idx": 60,
+      "ops_idx": 74,
       "module_name": "model.layers.6.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -6256,13 +11150,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.581501707434654e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0005460804148375791
     },
     {
       "iter": 2,
-      "ops_idx": 61,
+      "ops_idx": 75,
       "module_name": "model.layers.6.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -6282,13 +11182,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.502494215965271e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0023162990238161105,
+      "memory_efficiency": 0.06286220712884419
     },
     {
       "iter": 2,
-      "ops_idx": 62,
+      "ops_idx": 76,
       "module_name": "model.layers.6.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -6308,11 +11214,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 5.7835131883621216e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0008206415857874646
     },
     {
       "iter": 2,
-      "ops_idx": 63,
+      "ops_idx": 77,
       "module_name": "model.layers.6.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -6332,13 +11244,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 8.626235648989677e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0008730181748845641,
+      "memory_efficiency": 0.023727024731387113
     },
     {
       "iter": 2,
-      "ops_idx": 64,
+      "ops_idx": 78,
       "module_name": "model.layers.7.input_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -6366,13 +11284,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 4.1165854781866074e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006077532863661289
     },
     {
       "iter": 2,
-      "ops_idx": 65,
+      "ops_idx": 79,
       "module_name": "model.layers.7.self_attn.qkv_proj",
       "operator_name": "QKVParallelLinear",
       "input_shapes": [
@@ -6392,13 +11316,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.680004298686981e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 12582912.0,
+      "memory_byte": 1589248.0,
+      "computes_efficiency": 0.0012584635548551304,
+      "memory_efficiency": 0.034192472570541255
     },
     {
       "iter": 2,
-      "ops_idx": 66,
+      "ops_idx": 80,
       "module_name": "model.layers.7.self_attn.rotary_emb",
       "operator_name": "RotaryEmbedding",
       "input_shapes": [
@@ -6430,13 +11360,177 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.995932638645172e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17440.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006272546617633898
     },
     {
       "iter": 2,
-      "ops_idx": 67,
+      "ops_idx": 81,
+      "module_name": "reshape_and_cache_flash",
+      "operator_name": "reshape_and_cache_flash",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4
+        ],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int64",
+        "str",
+        "torch.float32",
+        "torch.float32"
+      ],
+      "output_shapes": [
+        []
+      ],
+      "output_dtypes": [
+        "NoneType"
+      ],
+      "duration_time": 1.690629869699478e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 8224.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0006991174455485501
+    },
+    {
+      "iter": 2,
+      "ops_idx": 82,
+      "module_name": "varlen_fwd",
+      "operator_name": "varlen_fwd",
+      "input_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          3728,
+          16,
+          8,
+          64
+        ],
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          5
+        ],
+        [
+          5
+        ],
+        [
+          4
+        ],
+        [],
+        [
+          4,
+          64
+        ],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+      ],
+      "input_dtypes": [
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.float16",
+        "torch.int32",
+        "torch.int32",
+        "torch.int32",
+        "NoneType",
+        "torch.int32",
+        "NoneType",
+        "int",
+        "int",
+        "float",
+        "float",
+        "bool",
+        "bool",
+        "int",
+        "int",
+        "int",
+        "bool",
+        "NoneType"
+      ],
+      "output_shapes": [
+        [
+          4,
+          8,
+          64
+        ],
+        [
+          8,
+          4
+        ]
+      ],
+      "output_dtypes": [
+        "torch.float16",
+        "torch.float32"
+      ],
+      "duration_time": 4.819268360733986e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 143360.0,
+      "memory_byte": 44416.0,
+      "computes_efficiency": 1.987390031778435e-05,
+      "memory_efficiency": 0.0013245669343219888
+    },
+    {
+      "iter": 2,
+      "ops_idx": 83,
       "module_name": "model.layers.7.self_attn.attn",
       "operator_name": "Attention",
       "input_shapes": [
@@ -6466,11 +11560,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 1e-11,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 0.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0
     },
     {
       "iter": 2,
-      "ops_idx": 68,
+      "ops_idx": 84,
       "module_name": "model.layers.7.self_attn.o_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -6490,13 +11590,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 0.00012963078916072845,
+      "ops_type": "TensorCore",
+      "computes_ops": 4194304.0,
+      "memory_byte": 532480.0,
+      "computes_efficiency": 0.00021616628813262223,
+      "memory_efficiency": 0.005903515542192632
     },
     {
       "iter": 2,
-      "ops_idx": 69,
+      "ops_idx": 85,
       "module_name": "model.layers.7.post_attention_layernorm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -6524,13 +11630,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 8.837739005684853e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0002830891873323791
     },
     {
       "iter": 2,
-      "ops_idx": 70,
+      "ops_idx": 86,
       "module_name": "model.layers.7.mlp.gate_up_proj",
       "operator_name": "MergedColumnParallelLinear",
       "input_shapes": [
@@ -6550,13 +11662,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.936676800251007e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 22544384.0,
+      "memory_byte": 2844160.0,
+      "computes_efficiency": 0.0021713165307435467,
+      "memory_efficiency": 0.05892751673875434
     },
     {
       "iter": 2,
-      "ops_idx": 71,
+      "ops_idx": 87,
       "module_name": "model.layers.7.mlp.act_fn",
       "operator_name": "SiluAndMul",
       "input_shapes": [
@@ -6576,11 +11694,17 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 4.8768240958452225e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 33024.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.0009732135793791892
     },
     {
       "iter": 2,
-      "ops_idx": 72,
+      "ops_idx": 88,
       "module_name": "model.layers.7.mlp.down_proj",
       "operator_name": "RowParallelLinear",
       "input_shapes": [
@@ -6600,13 +11724,19 @@
         []
       ],
       "output_dtypes": [
-        "float16",
-        "object"
-      ]
+        "torch.float16",
+        "NoneType"
+      ],
+      "duration_time": 6.934721022844315e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 11272192.0,
+      "memory_byte": 1424128.0,
+      "computes_efficiency": 0.0010859644501339013,
+      "memory_efficiency": 0.029514511962069192
     },
     {
       "iter": 2,
-      "ops_idx": 73,
+      "ops_idx": 89,
       "module_name": "model.norm",
       "operator_name": "RMSNorm",
       "input_shapes": [
@@ -6634,13 +11764,19 @@
         ]
       ],
       "output_dtypes": [
-        "float16",
-        "float16"
-      ]
+        "torch.float16",
+        "torch.float16"
+      ],
+      "duration_time": 3.977864980697632e-05,
+      "ops_type": "ShardCore",
+      "computes_ops": 0.0,
+      "memory_byte": 17408.0,
+      "computes_efficiency": 0.0,
+      "memory_efficiency": 0.00062894752967111
     },
     {
       "iter": 2,
-      "ops_idx": 74,
+      "ops_idx": 90,
       "module_name": "logits_processor",
       "operator_name": "LogitsProcessor",
       "input_shapes": [
@@ -6662,7 +11798,13 @@
       ],
       "output_dtypes": [
         "torch.float16"
-      ]
+      ],
+      "duration_time": 8.895713835954666e-05,
+      "ops_type": "TensorCore",
+      "computes_ops": 262144000.0,
+      "memory_byte": 33028096.0,
+      "computes_efficiency": 0.019687716352311427,
+      "memory_efficiency": 0.5336030583674206
     }
   ]
 }

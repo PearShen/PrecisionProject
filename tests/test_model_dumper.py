@@ -180,10 +180,10 @@ class TestModelDumper:
             "The president of the United States is",
             "The capital of France is",
             "The future of AI is",
-        ]
+        ]#*100
         from vllm import LLM, SamplingParams 
         os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
-        # model_name = "facebook/opt-125m"
+        model_name = "facebook/opt-125m"
         model_name = "nickypro/tinyllama-42M-fp32"
         llm = LLM(model=model_name,enforce_eager=True, gpu_memory_utilization=0.03, dtype=torch.float16)
         mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 3}}

@@ -1,0 +1,56 @@
+{
+  "framework": "vllm",
+  "model_name": "facebook/opt-125m",
+  "model_type": "vLLM",
+  "parameters": "N/A",
+  "input_info": {
+    "type": "text_or_sampling_params",
+    "sample_input": "{'prompts': ['Hello, my name is', 'The president of the United States is', 'The capital of France is', 'The future of AI is'], 'params': {'temperature': 0.0, 'max_tokens': 3}}"
+  },
+  "output_info": {
+    "type": "generated_text",
+    "sample_output": "[' J.C', ' not a racist', ' the capital of', ' in the hands']",
+    "num_outputs": 4
+  },
+  "nodes": [
+    {
+      "op": "null",
+      "name": "data",
+      "attrs": {},
+      "inputs": []
+    },
+    {
+      "op": "Convolution",
+      "name": "conv1",
+      "attrs": {
+        "kernel": "(5,5)",
+        "num_filter": "20",
+        "stride": "(1,1)",
+        "pad": "(0,0)",
+        "no_bias": "False"
+      },
+      "inputs": [[0, 0, 0]]
+    },
+    {
+      "op": "Activation",
+      "name": "relu1",
+      "attrs": {"act_type": "relu"},
+      "inputs": [[1, 0, 0]]
+    },
+    {
+      "op": "Pooling",
+      "name": "pool1",
+      "attrs": {
+        "kernel": "(2,2)",
+        "pool_type": "max",
+        "stride": "(2,2)",
+        "pad": "(0,0)"
+      },
+      "inputs": [[2, 0, 0]]
+    }
+  ],
+  "arg_nodes": [0, 1],
+  "node_row_ptr": [0, 1, 2, 3, 4],
+  "heads": [[3, 0, 0]],
+  "attrs": {"mxnet_version": ["int", 10400]}
+}
