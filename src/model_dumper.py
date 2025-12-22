@@ -11,6 +11,7 @@ import os
 import time
 from typing import Any, Dict, List
 import numpy as np
+import pandas as pd
 
 
 from utils.data import prepare_input_and_output, transfer_torch2np_data
@@ -175,7 +176,8 @@ class ModelDumper:
         }
         with open(os.path.join(output_path, f"model_info.json"), "w") as f:
             json.dump(model_info, f, indent=2)
-
+        if self.enable_ops_eff:
+            self.model_efficiency_dump(model_info["layers"], model_name, output_path)
         # For vLLM, we need to patch the model to capture operator traces
         # self._patch_vllm_model(model, model_name)
         self._save_traces_hdf5(output_path, model_name)
@@ -203,7 +205,7 @@ class ModelDumper:
             input_shapes=[list(inp.shape) if hasattr(inp, 'shape') else [] for inp in input],
             input_dtypes=[str(inp.dtype) if hasattr(inp, 'dtype') else str(type(inp).__name__) for inp in input],
             inputs=inputs_np,
-            timestamp=time.perf_counter()
+            start_timestamp=time.perf_counter()
         )
         self.pre_operator_traces.append(pre_operator_info)
         return input
@@ -244,7 +246,9 @@ class ModelDumper:
             output_dtypes=[str(out.dtype) if hasattr(out, 'dtype') else str(type(out).__name__) for out in (output if isinstance(output, (list, tuple)) else [output])],
             inputs=inputs_np,
             outputs=outputs_np,
-            timestamp=timestamp-self.pre_operator_traces[-1].timestamp
+            start_timestamp=self.pre_operator_traces[-1].start_timestamp,
+            end_timestamp=timestamp,
+            duration_time=timestamp-self.pre_operator_traces[-1].start_timestamp
         )
         self.operator_traces.append(operator_info)
         return output
@@ -303,7 +307,9 @@ class ModelDumper:
             output_dtypes=["str"],
             inputs=[np.array([model_name])],
             outputs=[np.array([model_name])],
-            timestamp=time.time()
+            start_timestamp=time.time(),
+            end_timestamp=time.time(),
+            duration_time=time.time()
         )
         self.operator_traces.append(operator_info)
 
@@ -455,11 +461,13 @@ class ModelDumper:
                 input_dtypes=data.input_dtypes,
                 output_shapes=data.output_shapes,
                 output_dtypes=data.output_dtypes,
-                duration_time=data.timestamp
+                start_timestamp=data.start_timestamp,
+                end_timestamp=data.end_timestamp,
+                duration_time=data.duration_time,
             )
             if self.enable_ops_eff:
                 ops_type, computes_ops, memory_byte, computes_efficiency, memory_efficiency = self.ops_eff_manager.get_ops_efficiency(data)
-                obj["duration_time"] = data.timestamp
+                obj["duration_time"] = data.duration_time
                 obj["ops_type"] = ops_type
                 obj["computes_ops"] = float(computes_ops)
                 obj["memory_byte"] = float(memory_byte)
@@ -492,7 +500,6 @@ class ModelDumper:
                         "output_dtypes": json.loads(group.attrs["output_dtypes"]),
                         "inputs": [],
                         "outputs": [],
-                        "timestamp": group.attrs["timestamp"]
                     }
 
                     # Load input arrays
@@ -534,7 +541,6 @@ class ModelDumper:
                 # Save metadata
                 group.attrs["module_name"] = self.module_name_dict[trace.module][module_ops_count%dup_module_lens]
                 group.attrs["operator_name"] = trace.operator_name
-                group.attrs["timestamp"] = trace.timestamp
 
                 # Save shapes and dtypes
                 group.attrs["input_shapes"] = json.dumps(trace.input_shapes)
@@ -603,6 +609,23 @@ class ModelDumper:
         self.transformer_ops_tail = None
         if self.enable_enhanced_capture:
             self.enhanced_capture_manager.restore_functional()
+    
+    def model_efficiency_dump(self, layer_data, model_name, dump_path="./"):
+        df = pd.DataFrame(layer_data)
+        group_data =df.groupby(["iter"]).agg({
+            "duration_time":"sum",
+            "computes_ops":"sum",
+            "memory_byte":"sum",
+            # "computes_efficiency":'mean',
+            # "memory_efficiency":'mean',
+        })
+        group_data['computes_efficiency'] = group_data['computes_ops']/self.ops_eff_manager.tcMac/group_data['duration_time']
+        group_data['memory_efficiency'] = group_data['memory_byte']/self.ops_eff_manager.tcBW/group_data['duration_time']
+        xlx_file = f"{dump_path}/{model_name.replace('/','_')}_efficiency.xlsx"
+        with pd.ExcelWriter(xlx_file) as writer:
+            df.to_excel(writer, sheet_name="total", index=True)
+            group_data.to_excel(writer, sheet_name="agg", index=True)
+        
     
     def dump_model(self, model, model_name, dump_path="./"):
         # 动态轴处理

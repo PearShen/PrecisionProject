@@ -23,7 +23,9 @@ class OperatorInfo:
     output_dtypes: List[str] = None
     inputs: List[np.ndarray] = None
     outputs: List[np.ndarray] = None
-    timestamp: float = None
+    start_timestamp: float = None
+    end_timestamp: float = None
+    duration_time: float = None
 
 class OperatorCaptureFramework:
     """统一的算子抓取框架"""
@@ -141,7 +143,9 @@ class OperatorCaptureFramework:
                     output_dtypes=[str(out.dtype) if hasattr(out, 'dtype') else str(type(out).__name__) for out in (output if isinstance(output, (list, tuple)) else [output])],
                     inputs=inputs_np,
                     outputs=outputs_np,
-                    timestamp=end_time-start_time
+                    start_timestamp=start_time,
+                    end_timestamp=end_time,
+                    duration_time=end_time-start_time,
                 )
                 self.operator_traces.append(operator_info)
                 return output

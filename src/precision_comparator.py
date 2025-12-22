@@ -154,7 +154,6 @@ class PrecisionComparator:
             "ops_idx": group.attrs["ops_idx"],
             "module_name": group.attrs["module_name"],
             "operator_name": group.attrs["operator_name"],
-            "timestamp": group.attrs["timestamp"],
             "input_shapes": json.loads(group.attrs["input_shapes"]),
             "output_shapes": json.loads(group.attrs["output_shapes"]),
             "input_dtypes": json.loads(group.attrs["input_dtypes"]),

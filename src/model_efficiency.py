@@ -13,14 +13,18 @@ class ModelEfficienyTransformer:
         self.ops_map = {
             # cc
             "VocabParallelEmbedding": self.VocabParallelEmbedding,
+            "OPTLearnedPositionalEmbedding": self.VocabParallelEmbedding,
             "RMSNorm":self.RMSNorm,
             "RotaryEmbedding":self.RotaryEmbedding,
             "reshape_and_cache_flash": self.reshape_and_cache,
             "SiluAndMul": self.SiluAndMul,
+            "LayerNorm": self.RMSNorm,
+            "ReLU":self.ReLU,
             
             # tc
             "QKVParallelLinear":self.Linear,
             "RowParallelLinear":self.Linear,
+            "ColumnParallelLinear":self.Linear,
             "MergedColumnParallelLinear":self.Linear,
             "LogitsProcessor":self.LogitsProcessor, 
             
@@ -38,10 +42,10 @@ class ModelEfficienyTransformer:
             logger.info(f" warning ops: {OperatorInfo.operator_name} not set spec func, used Default_Ops_func")
         func = self.ops_map.get(OperatorInfo.operator_name, self.Default_Ops_func)
         ops_type, computes_ops, memory_byte = func(OperatorInfo)
-        return [ops_type, computes_ops, memory_byte, computes_ops/self.tcMac/OperatorInfo.timestamp, memory_byte/self.tcBW/OperatorInfo.timestamp]
+        return [ops_type, computes_ops, memory_byte, computes_ops/self.tcMac/OperatorInfo.duration_time, memory_byte/self.tcBW/OperatorInfo.duration_time]
         
     def Default_Ops_func(self, OperatorInfo):
-        OperatorInfo.timestamp=1*10**(-11)
+        OperatorInfo.duration_time=1*10**(-11)
         return (CC, 0, 0)
     
     def _get_common_memory_byte(self, OperatorInfo):
@@ -63,6 +67,11 @@ class ModelEfficienyTransformer:
             memory_byte += output_num
             
         return memory_byte
+    
+    def ReLU(self, OperatorInfo):
+        computes_ops = 0
+        memory_byte = self._get_common_memory_byte(OperatorInfo)
+        return (CC, computes_ops, memory_byte,)
     
     def VocabParallelEmbedding(self, OperatorInfo):
         computes_ops = 0
