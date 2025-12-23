@@ -13,9 +13,8 @@ import subprocess
 from pathlib import Path
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent.parent / "src"))
 
-from precision_tester import PrecisionTester
+from PrecisionProject.precision_tester import PrecisionTester
 
 
 class TestIntegration:

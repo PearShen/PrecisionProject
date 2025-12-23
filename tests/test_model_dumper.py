@@ -12,9 +12,8 @@ import sys
 from pathlib import Path
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent.parent / "src"))
 
-from model_dumper import ModelDumper
+from PrecisionProject.model_dumper import ModelDumper
 
 
 class TestModelDumper:

@@ -15,6 +15,7 @@ A comprehensive precision testing framework for PyTorch and vLLM models.
 
 ```bash
 pip install -r requirements.txt
+python setup.py sdist bdist_wheel
 ```
 
 ## Usage

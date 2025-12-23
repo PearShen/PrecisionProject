@@ -1,0 +1,78 @@
+Metadata-Version: 2.1
+Name: PrecisionProject
+Version: 1.0.0
+Summary: A comprehensive precision testing framework for PyTorch and vLLM models
+Home-page: https://github.com/precisionproject/precisionproject
+Author: PrecisionProject Team
+Author-email: contact@precisionproject.dev
+License: UNKNOWN
+Project-URL: Bug Reports, https://github.com/precisionproject/precisionproject/issues
+Project-URL: Source, https://github.com/precisionproject/precisionproject
+Project-URL: Documentation, https://precisionproject.readthedocs.io/
+Keywords: pytorch,vllm,precision,testing,machine-learning,model-validation
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Testing
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: torch>=2.0.0
+Requires-Dist: vllm>=0.4.0
+Requires-Dist: numpy>=1.24.0
+Requires-Dist: h5py>=3.8.0
+Requires-Dist: pytest>=7.0.0
+Requires-Dist: tensorboard>=2.13.0
+Requires-Dist: scipy>=1.10.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0.0; extra == "dev"
+Requires-Dist: black>=22.0.0; extra == "dev"
+Requires-Dist: flake8>=4.0.0; extra == "dev"
+Requires-Dist: mypy>=1.0.0; extra == "dev"
+Provides-Extra: docs
+Requires-Dist: sphinx>=4.0.0; extra == "docs"
+Requires-Dist: sphinx-rtd-theme>=1.0.0; extra == "docs"
+
+# PrecisionProject
+
+A comprehensive precision testing framework for PyTorch and vLLM models.
+
+## Features
+
+-Dump model structure and operator execution traces with comprehensive multi-dimensional information
+- Capture input/output data for each operator during forward pass with shapes and data types
+- Compare results using absolute error, relative error, and cosine similarity
+- Support for PyTorch and vLLM frameworks with detailed layer-specific information
+- Enhanced model info with input/output shapes, dtypes, layer indices, trainable parameters, and configurations
+- Organized data storage with iteration, model, layer, and operator metadata
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+python setup.py sdist bdist_wheel
+```
+
+## Usage
+
+```python
+from PrecisionProject import PrecisionTester
+
+# Initialize tester
+tester = PrecisionTester()
+
+# Dump model execution
+tester.dump_model_execution(model, input_data, output_path="./dumps")
+
+# Compare precision
+results = tester.compare_precision(golden_path="./golden", test_path="./test")
+```

@@ -9,10 +9,8 @@ import torch.nn as nn
 from pathlib import Path
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent / "src"))
-
-from model_dumper import ModelDumper
-from precision_comparator import PrecisionComparator, ComparisonConfig
+from PrecisionProject.model_dumper import ModelDumper
+from PrecisionProject.precision_comparator import PrecisionComparator, ComparisonConfig
 
 
 def create_simple_model():

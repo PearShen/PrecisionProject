@@ -13,10 +13,9 @@ import shutil
 from pathlib import Path
 
 # Add src to path
-sys.path.append(str(Path(__file__).parent.parent / "src"))
 
-from precision_tester import PrecisionTester
-from precision_comparator import ComparisonConfig
+from PrecisionProject.precision_tester import PrecisionTester
+from PrecisionProject.precision_comparator import ComparisonConfig
 
 
 class TestPrecisionTester:
