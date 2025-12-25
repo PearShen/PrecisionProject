@@ -9,8 +9,8 @@ from typing import Any, Dict, List, Optional, Union
 import torch
 import torch.nn as nn
 
-from .model_dumper import ModelDumper
-from .precision_comparator import PrecisionComparator, ComparisonConfig
+from PrecisionProject.model_dumper import ModelDumper
+from PrecisionProject.precision_comparator import PrecisionComparator, ComparisonConfig
 
 
 class PrecisionTester:

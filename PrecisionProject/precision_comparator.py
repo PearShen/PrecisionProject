@@ -164,14 +164,14 @@ class PrecisionComparator:
 
         # Load inputs
         input_keys = [k for k in group.keys() if k.startswith("input_")]
-        for idx, k in enumerate(sorted(input_keys)):
-            if trace["input_shapes"][idx] :
+        for idx, k in enumerate(input_keys):
+            if group[k].shape :
                 trace["inputs"].append(group[k][:])
 
         # Load outputs
         output_keys = [k for k in group.keys() if k.startswith("output_")]
-        for idx, k in enumerate(sorted(output_keys)):
-            if trace["output_shapes"][idx] :
+        for idx, k in enumerate(output_keys):
+            if group[k].shape:
                 trace["outputs"].append(group[k][:])
 
         return trace
@@ -181,6 +181,8 @@ class PrecisionComparator:
         # Basic validation
         if golden["iteration"] != test["iteration"]:
             raise ValueError(f"Iteration mismatch: {golden['iteration']} vs {test['iteration']}")
+        if golden["ops_idx"] != test["ops_idx"]:
+            raise ValueError(f"ops_idx mismatch: {golden['ops_idx']} vs {test['ops_idx']}")
         if golden["module_name"] != test["module_name"]:
             raise ValueError(f"Layer name mismatch: {golden['module_name']} vs {test['module_name']}")
         if golden["operator_name"] != test["operator_name"]:
@@ -190,6 +192,13 @@ class PrecisionComparator:
         input_errors = []
         if self.config.compare_inputs and len(golden["inputs"]) == len(test["inputs"]):
             for i, (golden_input, test_input) in enumerate(zip(golden["inputs"], test["inputs"])):
+                # skip empty tennsor
+                if not golden_input.shape or golden_input.shape == (0,):
+                    continue
+                # skip non digital tensor
+                if golden_input.dtype.kind in ['U', 'S', 'O']:
+                    continue
+                    
                 abs_err, rel_err, cos_sim = self.compare_tensors(golden_input, test_input)
                 input_errors.append((abs_err, rel_err, cos_sim))
 
@@ -197,6 +206,12 @@ class PrecisionComparator:
         output_errors = []
         if self.config.compare_outputs and len(golden["outputs"]) == len(test["outputs"]):
             for i, (golden_output, test_output) in enumerate(zip(golden["outputs"], test["outputs"])):
+                # skip empty tennsor
+                if not golden_output.shape or golden_output.shape == (0,):
+                    continue
+                # skip non digital tensor
+                if golden_output.dtype.kind in ['U', 'S', 'O']:
+                    continue
                 abs_err, rel_err, cos_sim = self.compare_tensors(golden_output, test_output)
                 output_errors.append((abs_err, rel_err, cos_sim))
 

@@ -8,7 +8,7 @@ TC = "TensorCore"
 CC = "ShardCore"
 
 class ModelEfficienyTransformer:
-    def __init__(self,quant_type=None,rope_width=64):
+    def __init__(self, model_config=None, quant_type=None,rope_width=64):
         
         self.ops_map = {
             # cc
@@ -31,11 +31,31 @@ class ModelEfficienyTransformer:
             # attn
             "varlen_fwd": self.varlen_fwd,
         }
-        self.quant_type=None
+        self.quant_pack_size = 1
+        self.quant_type=quant_type
+        if self.quant_type is None and model_config:
+            quantization_config = model_config.get("quantization_config", None)
+            if quantization_config:
+                
+                bits = quantization_config['bits']
+                if bits < 8:
+                    self.quant_pack_size = 8 / bits
+                    self.quant_type = f"torch.int8"
+                else:
+                    self.quant_type = f"torch.int{quantization_config['bits']}"
+                    
+        
         self.rope_width=rope_width
 
+        
+        # cuda
         self.tcBW = 695.8 * 10**9 #GB/s ->Byte/s
         self.tcMac = 37.42 * 2 * 2 * 10**12 # TFLOPS FP8
+        
+        # jw2e
+        Hz = 6 * 10**6 #MHz
+        self.tcBW = 128*Hz #GB/s ->Byte/s
+        self.tcMac = 8192 * 2 * Hz # TFLOPS FP8
     
     def get_ops_efficiency(self, OperatorInfo):
         if OperatorInfo.operator_name not in self.ops_map:
@@ -99,13 +119,13 @@ class ModelEfficienyTransformer:
             weight_byte = self.quant_type
         else:
             weight_byte = OperatorInfo.input_dtypes[0]
-        bpp = torch._utils._element_size(eval(weight_byte))
+        bpp = torch._utils._element_size(eval(OperatorInfo.input_dtypes[0]))
         
         computes_ops = bpp*2*OperatorInfo.input_shapes[0][0]*OperatorInfo.input_shapes[0][1]*OperatorInfo.output_shapes[0][1] 
         memory_byte = self._get_common_memory_byte(OperatorInfo)
         # add weight size
-        
-        memory_byte += bpp*OperatorInfo.input_shapes[0][-1]*OperatorInfo.output_shapes[0][-1]
+        w_bpp = torch._utils._element_size(eval(weight_byte)) / self.quant_pack_size
+        memory_byte += w_bpp*OperatorInfo.input_shapes[0][-1]*OperatorInfo.output_shapes[0][-1]
         
         return (TC, computes_ops, memory_byte,)
     
@@ -163,6 +183,3 @@ class ModelEfficienyTransformer:
             memory_byte += input_lens_kv[b]* head_num_kv * head_dim_q * bpp
             memory_byte += input_lens_kv[b]* head_num_kv * head_num_kv * bpp
         return (TC, computes_ops, memory_byte,)
-            
-            
-            

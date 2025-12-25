@@ -4,6 +4,7 @@ Main entry point for PrecisionProject
 
 import argparse
 import sys
+import os
 import torch
 import torch.nn as nn
 from pathlib import Path
@@ -13,21 +14,44 @@ from PrecisionProject.model_dumper import ModelDumper
 from PrecisionProject.precision_comparator import PrecisionComparator, ComparisonConfig
 
 
-def create_simple_model():
+def create_torch_simple_model_and_input(model_name=None):
     """Create a simple test model"""
-    return nn.Sequential(
+    model = nn.Sequential(
         nn.Linear(10, 20),
         nn.ReLU(),
         nn.Linear(20, 5),
         nn.Softmax(dim=1)
     )
+    input_data = torch.randn(8, 10)
+    return model, input_data
+
+def create_vllm_model_and_input(model_name=None):
+    """Create a simple test model"""
+    from vllm import LLM, SamplingParams 
+    os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
+    
+    prompts = [
+        "Hello, my name is",
+        "The president of the United States is",
+        "The capital of France is",
+        "The future of AI is",
+    ]
+    # model_name = "facebook/opt-125m"
+    # model_name = "nickypro/tinyllama-42M-fp32"
+    # model_name = "/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4"
+    llm = LLM(model=model_name, enforce_eager=True, gpu_memory_utilization=0.4)
+    
+    mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 3}}
+    return llm,mock_input
 
 
 def main():
     parser = argparse.ArgumentParser(description="PrecisionProject - Model Precision Testing Framework")
-    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="demo",
+    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="dump",
                        help="Operation mode: dump (capture traces), compare (precision testing), or demo (run both)")
-    parser.add_argument("--framework", choices=["torch", "vllm"], default="torch",
+    parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4",
+                       help="model path")
+    parser.add_argument("--framework", choices=["torch", "vllm"], default="vllm",
                        help="Framework to use")
     parser.add_argument("--golden-path", default="./data/golden",
                        help="Path to golden reference data")
@@ -46,33 +70,32 @@ def main():
 
     if args.mode == "demo":
         # Demo mode: run dump and compare
-        print("Running PrecisionProject demo...")
-
-        # Create test data
-        input_data = torch.randn(8, 10)
 
         # Create golden reference
         print("Creating golden reference...")
-        golden_dumper = ModelDumper(framework="torch")
-        model = create_simple_model()
+        model,mock_input = create_vllm_model_and_input(args.model_path)
+        golden_dumper = ModelDumper(framework=args.framework, model_path=args.model_path)
         golden_dumper.dump_model_execution(
-            model, input_data, args.golden_path, "demo_model", iterations=2
+            model, mock_input, args.golden_path, args.model_path, iterations=1
         )
-
+        del model
+        del golden_dumper
         # Create test data with slight perturbation
         print("Creating test reference with perturbation...")
-        test_model = create_simple_model()
-        test_model.load_state_dict(model.state_dict())
-        # Add small noise to test model
-        with torch.no_grad():
-            for param in test_model.parameters():
-                param += torch.randn_like(param) * 1e-6
+        test_model,test_mock_input = create_vllm_model_and_input(args.model_path)
+        if args.framework == "torch":
+            test_model.load_state_dict(model.state_dict())
+            # Add small noise to test model
+            with torch.no_grad():
+                for param in test_model.parameters():
+                    param += torch.randn_like(param) * 1e-6
 
-        test_dumper = ModelDumper(framework="torch")
+        test_dumper = ModelDumper(framework=args.framework, model_path=args.model_path)
         test_dumper.dump_model_execution(
-            test_model, input_data, args.test_path, "demo_model", iterations=2
+            test_model, test_mock_input, args.test_path, args.model_path, iterations=1
         )
-
+        del test_model
+        del test_dumper
         # Compare precision
         print("Comparing precision...")
         config = ComparisonConfig(
@@ -90,18 +113,15 @@ def main():
 
     elif args.mode == "dump":
         # Dump mode: just capture traces
-        print(f"Dumping model traces to {args.output_path}")
-        dumper = ModelDumper(framework=args.framework)
+        print(f"Dumping model traces to {args.test_path}")
+        model, mock_input = create_vllm_model_and_input(args.model_path)
+        dumper = ModelDumper(framework=args.framework, model_path=args.model_path)
 
-        if args.framework == "torch":
-            model = create_simple_model()
-            input_data = torch.randn(8, 10)
-            dumper.dump_model_execution(
-                model, input_data, args.output_path, "test_model", iterations=5
-            )
-        else:
-            print("vLLM dump mode requires specific model setup")
-
+        dumper.dump_model_execution(
+            model, mock_input, args.test_path, args.model_path, iterations=1
+        )
+        del model
+        del dumper
     elif args.mode == "compare":
         # Compare mode: just compare existing traces
         print(f"Comparing traces from {args.golden_path} and {args.test_path}")

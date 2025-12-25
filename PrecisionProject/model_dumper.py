@@ -14,15 +14,15 @@ import numpy as np
 import pandas as pd
 
 
-from .utils.data import prepare_input_and_output, transfer_torch2np_data
-from .operator_capture import OperatorInfo, OperatorCaptureFramework
-from .model_efficiency import ModelEfficienyTransformer
+from PrecisionProject.utils.data import prepare_input_and_output, transfer_torch2np_data, load_model_config
+from PrecisionProject.operator_capture import OperatorInfo, OperatorCaptureFramework
+from PrecisionProject.model_efficiency import ModelEfficienyTransformer
 
 
 class ModelDumper:
     """Dumps model structure and operator execution traces"""
 
-    def __init__(self, framework: str = "torch", enable_enhanced_capture: bool = True, enable_ops_eff: bool = True):
+    def __init__(self, framework: str = "torch", model_path=None, enable_enhanced_capture: bool = True, enable_ops_eff: bool = True):
         """
         Initialize the model dumper.
 
@@ -50,7 +50,8 @@ class ModelDumper:
             self.enhanced_capture_manager = OperatorCaptureFramework(operator_traces=self.operator_traces)
             self.capture_operator_info()
         if self.enable_ops_eff:
-            self.ops_eff_manager = ModelEfficienyTransformer()
+            model_config = load_model_config(model_path)
+            self.ops_eff_manager = ModelEfficienyTransformer(model_config)
             
             
     def capture_operator_info(self):

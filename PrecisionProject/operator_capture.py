@@ -5,11 +5,10 @@ import torch.nn.functional as F
 import types
 from functools import wraps
 import time
-from vllm import _custom_ops as ops
 from typing import Any, Dict, List, Optional, Union, Tuple, Callable
 from dataclasses import dataclass
 import numpy as np
-from .utils.data import prepare_input_and_output, transfer_torch2np_data
+from PrecisionProject.utils.data import prepare_input_and_output, transfer_torch2np_data
 
 @dataclass
 class OperatorInfo:
@@ -51,17 +50,29 @@ class OperatorCaptureFramework:
         # torch.ops._vllm_fa2_C.varlen_fwd,fwd
         
         namespaces_func_names = {
+            
+            # cuda
             "_C_cache_ops": [ 
                 'reshape_and_cache_flash',
                 'reshape_and_cache',
                 'flas'
             ],
+            # cuda
             "_vllm_fa2_C":[
                 "varlen_fwd",
                 "fwd",
-            ]
+            ],
+            
+            # Phytium npu
+            "phy": [
+                "reshape_and_cache",
+                "concat_and_cache_mla",
+                "phy_flash_attention",
+                "decode_attention",
+                "phy_attention_mask_generation",
+            ],
+            
         }
-        
         
         for namespace, func_names in namespaces_func_names.items():
             module = __import__(module_path, fromlist=[''])
@@ -183,6 +194,7 @@ def test():
             print(key.dtype, self.kv_cache[0].dtype)
             
             x = torch.nn.functional.softmax(key, dim=-1)
+            from vllm import _custom_ops as ops
             ops.reshape_and_cache_flash(
                     key,
                     value,
