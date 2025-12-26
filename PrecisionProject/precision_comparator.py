@@ -18,6 +18,7 @@ class ComparisonResult:
     operator_name: str
     module_name: str
     iteration: int
+    ops_idx:int
     absolute_error_input: float
     relative_error_input: float
     cosine_similarity_input: float
@@ -252,6 +253,7 @@ class PrecisionComparator:
             operator_name=golden["operator_name"],
             module_name=golden["module_name"],
             iteration=golden["iteration"],
+            ops_idx=golden["ops_idx"],
             absolute_error_input=abs_error_input,
             relative_error_input=rel_error_input,
             cosine_similarity_input=cosine_similarity_input,
@@ -282,11 +284,15 @@ class PrecisionComparator:
         rel_errors = [r.relative_error for r in results]
         cosine_sims = [r.cosine_similarity for r in results]
         passed_count = sum(1 for r in results if r.passed)
+        failed_ops = [dict(operator_name=r.operator_name,
+                           iteration=int(r.iteration),
+                           ops_idx=int(r.ops_idx)) for r in results if not r.passed]
 
         return {
             "total_comparisons": int(len(results)),
             "passed_comparisons": int(passed_count),
             "failed_comparisons": int(len(results) - passed_count),
+            "failed_ops": failed_ops,
             "pass_rate": passed_count / len(results),
             "max_absolute_error": np.max(abs_errors),
             "mean_absolute_error": np.mean(abs_errors),

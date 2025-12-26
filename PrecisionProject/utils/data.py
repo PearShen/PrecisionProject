@@ -9,21 +9,30 @@ def transfer_torch2np_data(torch_tensor):
         return torch_tensor.detach().cpu().view(torch.uint8).numpy()
     return torch_tensor.detach().cpu().numpy()
 
-def prepare_input_and_output(self, input, output):
+def prepare_input_and_output(input, output, frame, ignore_big_tensor_framework):
     inputs_np = []
     for inp in input:
         if isinstance(inp, torch.Tensor):
-            inputs_np.append(transfer_torch2np_data(inp))
+            if frame in ignore_big_tensor_framework and inp.ndim > 3:
+                inputs_np.append(np.array([]))
+            else:   
+                inputs_np.append(transfer_torch2np_data(inp))
         else:
             inputs_np.append(np.array(inp))
 
     outputs_np = []
     if isinstance(output, torch.Tensor):
-        outputs_np.append(transfer_torch2np_data(output))
+        if frame in ignore_big_tensor_framework and output.ndim > 3:
+            outputs_np.append(np.array([]))
+        else:
+            outputs_np.append(transfer_torch2np_data(output))
     elif isinstance(output, (list, tuple)):
         for out in output:
             if isinstance(out, torch.Tensor):
-                outputs_np.append(transfer_torch2np_data(out))
+                if frame in ignore_big_tensor_framework and out.ndim > 3:
+                    outputs_np.append(np.array([]))
+                else:
+                    outputs_np.append(transfer_torch2np_data(out))
             else:
                 outputs_np.append(np.array(out))
     else:

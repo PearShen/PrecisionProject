@@ -162,8 +162,8 @@ class ModelEfficienyTransformer:
         return (CC, computes_ops, memory_byte,)
     
     def varlen_fwd(self, OperatorInfo):
-        input_lens_q = OperatorInfo.inputs[4][1:]-OperatorInfo.inputs[4][:-1]
-        input_lens_kv = OperatorInfo.inputs[6]
+        input_lens_q = OperatorInfo.attr["input_lens_q"] #inputs[4][1:]-OperatorInfo.inputs[4][:-1]
+        input_lens_kv = OperatorInfo.attr["input_lens_kv"] #inputs[6]
         head_num_attn = OperatorInfo.input_shapes[0][1]
         head_dim_q = OperatorInfo.input_shapes[0][-1]
         head_dim_v = OperatorInfo.output_shapes[0][-1]
@@ -174,12 +174,12 @@ class ModelEfficienyTransformer:
         # computes_ops
         computes_ops = 0
         for b, _ in enumerate(input_lens_q):
-            computes_ops += bpp*input_lens_q[b]* head_num_attn * input_lens_kv[b] * (head_dim_q + head_dim_v) * 2
+            computes_ops += bpp*input_lens_q[b].item() * head_num_attn * input_lens_kv[b].item() * (head_dim_q + head_dim_v) * 2
             
         # memory_byte
         memory_byte = 0
         for b, _ in enumerate(input_lens_q):
-            memory_byte += input_lens_q[b]* head_num_attn * head_dim_q * bpp
-            memory_byte += input_lens_kv[b]* head_num_kv * head_dim_q * bpp
-            memory_byte += input_lens_kv[b]* head_num_kv * head_num_kv * bpp
+            memory_byte += input_lens_q[b].item()* head_num_attn * head_dim_q * bpp
+            memory_byte += input_lens_kv[b].item()* head_num_kv * head_dim_q * bpp
+            memory_byte += input_lens_kv[b].item()* head_num_kv * head_num_kv * bpp
         return (TC, computes_ops, memory_byte,)

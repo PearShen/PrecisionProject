@@ -25,13 +25,16 @@ class OperatorInfo:
     start_timestamp: float = None
     end_timestamp: float = None
     duration_time: float = None
+    attr: dict =None
 
 class OperatorCaptureFramework:
     """统一的算子抓取框架"""
     
-    def __init__(self, operator_traces=[]):
+    def __init__(self, operator_traces=[], framework=None, ignore_big_tensor_framework=[]):
         self.patched_functions = {}
         self.operator_traces = operator_traces
+        self.framework = framework
+        self.ignore_big_tensor_framework= ignore_big_tensor_framework
         self.module_name_dict = {}
         self.ops_count = 0
         self.enabled = True
@@ -69,10 +72,15 @@ class OperatorCaptureFramework:
                 "concat_and_cache_mla",
                 "phy_flash_attention",
                 "decode_attention",
-                "phy_attention_mask_generation",
+                # "phy_attention_mask_generation",
             ],
             
         }
+        
+        self.attr_ops = [
+            "varlen_fwd",
+            "fwd",
+        ]
         
         for namespace, func_names in namespaces_func_names.items():
             module = __import__(module_path, fromlist=[''])
@@ -120,29 +128,15 @@ class OperatorCaptureFramework:
                 # 执行原始函数
                 output = original_func(*args, **kwargs)
                 end_time = time.perf_counter()
-                
-                
                 input = list(args)+list(kwargs.values())
-                # inputs_np, outputs_np = prepare_input_and_output(input, output)
-                
-                inputs_np = []
-                for inp in input:
-                    if isinstance(inp, torch.Tensor):
-                        inputs_np.append(transfer_torch2np_data(inp))
-                    else:
-                        inputs_np.append(np.array(inp))
-
-                outputs_np = []
-                if isinstance(output, torch.Tensor):
-                    outputs_np.append(transfer_torch2np_data(output))
-                elif isinstance(output, (list, tuple)):
-                    for out in output:
-                        if isinstance(out, torch.Tensor):
-                            outputs_np.append(transfer_torch2np_data(out))
-                        else:
-                            outputs_np.append(np.array(out))
+                inputs_np, outputs_np = prepare_input_and_output(input, output, self.framework, self.ignore_big_tensor_framework)
+                if func_name in self.attr_ops:
+                    attr = dict(
+                        input_lens_q = input[4][1:]-input[4][:-1],
+                        input_lens_kv = input[6]
+                    )
                 else:
-                    outputs_np.append(np.array(output))
+                    attr = {}
                 operator_info = OperatorInfo(
                     module=original_func,
                     module_name=func_name,
@@ -157,6 +151,7 @@ class OperatorCaptureFramework:
                     start_timestamp=start_time,
                     end_timestamp=end_time,
                     duration_time=end_time-start_time,
+                    attr=attr,
                 )
                 self.operator_traces.append(operator_info)
                 return output

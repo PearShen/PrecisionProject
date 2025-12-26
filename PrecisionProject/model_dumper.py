@@ -22,7 +22,8 @@ from PrecisionProject.model_efficiency import ModelEfficienyTransformer
 class ModelDumper:
     """Dumps model structure and operator execution traces"""
 
-    def __init__(self, framework: str = "torch", model_path=None, enable_enhanced_capture: bool = True, enable_ops_eff: bool = True):
+    def __init__(self, framework: str = "torch", model_path=None, enable_enhanced_capture: bool = True, 
+                 enable_ops_eff: bool = True, dump_start_iter=0, dump_iter_count=3):
         """
         Initialize the model dumper.
 
@@ -35,6 +36,8 @@ class ModelDumper:
         self.pre_operator_traces: List[OperatorInfo] = []
         self.operator_traces: List[OperatorInfo] = []
         self.iteration_count = 0
+        self.dump_start_iter=dump_start_iter
+        self.dump_iter_count=dump_iter_count
         self.pre_hooks = []
         self.hooks = []
         self.transformer_ops_head = None
@@ -44,10 +47,11 @@ class ModelDumper:
         self.ops_count=0
         self.enable_enhanced_capture = enable_enhanced_capture
         self.enable_ops_eff = enable_ops_eff and framework in self.ignore_big_tensor_framework
+        self
         
         
         if self.enable_enhanced_capture:
-            self.enhanced_capture_manager = OperatorCaptureFramework(operator_traces=self.operator_traces)
+            self.enhanced_capture_manager = OperatorCaptureFramework(operator_traces=self.operator_traces, framework=self.framework, ignore_big_tensor_framework=self.ignore_big_tensor_framework)
             self.capture_operator_info()
         if self.enable_ops_eff:
             model_config = load_model_config(model_path)
@@ -214,28 +218,16 @@ class ModelDumper:
     
     def hook_fn(self, name, module, input, output):
         # Convert inputs and outputs to numpy arrays
-        # inputs_np, outputs_np = prepare_input_and_output(input, output)
         timestamp=time.perf_counter()
-        inputs_np = []
-        outputs_np = []
-        
-        for inp in input:
-            if isinstance(inp, torch.Tensor):
-                inputs_np.append(transfer_torch2np_data(inp))
-            else:
-                inputs_np.append(np.array(inp))
-
-        if isinstance(output, torch.Tensor):
-            outputs_np.append(transfer_torch2np_data(output))
-        elif isinstance(output, (list, tuple)):
-            for out in output:
-                if isinstance(out, torch.Tensor):
-                    outputs_np.append(transfer_torch2np_data(out))
-                else:
-                    outputs_np.append(np.array(out))
-        else:
-            outputs_np.append(np.array(output))
-
+        if name == self.transformer_ops_head:
+            self.iteration_count += 1
+        if self.iteration_count <= self.dump_start_iter or self.iteration_count > (self.dump_start_iter+self.dump_iter_count):
+            if self.enable_enhanced_capture:
+                self.enhanced_capture_manager.disable()
+            return
+        if self.enable_enhanced_capture:
+            self.enhanced_capture_manager.enable()
+        inputs_np, outputs_np = prepare_input_and_output(input, output, self.framework, self.ignore_big_tensor_framework)
         operator_info = OperatorInfo(
             module=module,
             module_name=name,
@@ -441,7 +433,7 @@ class ModelDumper:
         # pdb.set_trace()
         structure = []
         module_static = {}
-        iter_cout = -1
+        iter_cout = self.dump_start_iter-1
         iter_ops_idx = 0
         parent_module_name = self.transformer_ops_tail
         for i, data in enumerate(self.operator_traces):
@@ -522,7 +514,7 @@ class ModelDumper:
         hdf5_path = os.path.join(output_path, f"operator_traces.h5")
 
         with h5py.File(hdf5_path, "w") as f:
-            iter_cout = -1
+            iter_cout = self.dump_start_iter-1
             parent_module_name = self.transformer_ops_tail
             module_static = {}
             iter_ops_idx = 0
@@ -605,6 +597,7 @@ class ModelDumper:
         self.pre_hooks.clear()
         
         self.ops_count=0
+        self.iteration_count = 0
         self.module_name_dict = {}
         self.transformer_ops_head = None
         self.transformer_ops_tail = None
@@ -626,8 +619,7 @@ class ModelDumper:
         with pd.ExcelWriter(xlx_file) as writer:
             df.to_excel(writer, sheet_name="total", index=True)
             group_data.to_excel(writer, sheet_name="agg", index=True)
-        
-    
+
     def dump_model(self, model, model_name, dump_path="./"):
         # 动态轴处理
         dynamic_axes = {

@@ -41,13 +41,13 @@ def create_vllm_model_and_input(model_name=None):
     # model_name = "/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4"
     llm = LLM(model=model_name, enforce_eager=True, gpu_memory_utilization=0.4)
     
-    mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 3}}
+    mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 2}}
     return llm,mock_input
 
 
 def main():
     parser = argparse.ArgumentParser(description="PrecisionProject - Model Precision Testing Framework")
-    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="dump",
+    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="demo",
                        help="Operation mode: dump (capture traces), compare (precision testing), or demo (run both)")
     parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4",
                        help="model path")
