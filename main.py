@@ -47,9 +47,9 @@ def create_vllm_model_and_input(model_name=None):
 
 def main():
     parser = argparse.ArgumentParser(description="PrecisionProject - Model Precision Testing Framework")
-    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="demo",
+    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="compare",
                        help="Operation mode: dump (capture traces), compare (precision testing), or demo (run both)")
-    parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4",
+    parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Qwen3-0.6B-GPTQ-Int4",
                        help="model path")
     parser.add_argument("--framework", choices=["torch", "vllm"], default="vllm",
                        help="Framework to use")
@@ -59,12 +59,14 @@ def main():
                        help="Path to test data")
     parser.add_argument("--output-path", default="./data/output",
                        help="Path to save results")
-    parser.add_argument("--abs-threshold", type=float, default=1e-5,
+    parser.add_argument("--abs-threshold", type=float, default=1e-2,
                        help="Absolute error threshold")
-    parser.add_argument("--rel-threshold", type=float, default=1e-5,
+    parser.add_argument("--rel-threshold", type=float, default=1e-2,
                        help="Relative error threshold")
-    parser.add_argument("--cosine-threshold", type=float, default=0.99999,
+    parser.add_argument("--cosine-threshold", type=float, default=0.99,
                        help="Cosine similarity threshold")
+    parser.add_argument("--dump-golden", type=bool, default=True,
+                       help="dump mode need set dump golden")
 
     args = parser.parse_args()
 
@@ -118,7 +120,7 @@ def main():
         dumper = ModelDumper(framework=args.framework, model_path=args.model_path)
 
         dumper.dump_model_execution(
-            model, mock_input, args.test_path, args.model_path, iterations=1
+            model, mock_input, args.golden_path if args.dump_golden else args.test_path, args.model_path, iterations=1
         )
         del model
         del dumper

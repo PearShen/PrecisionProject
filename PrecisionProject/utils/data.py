@@ -2,6 +2,21 @@ import torch
 import numpy as np
 import json
 
+torch.set_printoptions(precision=8)
+def compare_arrays(arr1, arr2, rtol=1e-2, atol=1e-2, csim=0.999999, dtype=None):
+    arr1_torch = torch.from_numpy(arr1).view(dtype).flatten()
+    arr2_torch = torch.from_numpy(arr2).view(dtype).flatten()
+    diff = torch.abs(arr1_torch-arr2_torch)
+    mask = diff >atol
+    print(f"extend atol diff input1: {arr1_torch[mask]}, input2: {arr2_torch[mask]}")
+
+    rel_diff = diff/(torch.abs(arr2_torch)+1e-12)
+    rmask = rel_diff >rtol
+    print(f"extend rtol rel_iff input1: {arr1_torch[rmask]}, input2: {arr2_torch[rmask]}")
+    mask = diff >atol
+    cosine_similarity = torch.nn.functional.cosine_similarity(arr1_torch.view(1,-1).to(torch.float64), arr2_torch.view(1,-1).to(torch.float64))
+    print(f"cosine_similarity: {cosine_similarity}, pass: {cosine_similarity>csim}")
+
 def transfer_torch2np_data(torch_tensor):
     if torch_tensor.dtype == torch.bfloat16:
         return torch_tensor.detach().cpu().view(torch.float16).numpy()
