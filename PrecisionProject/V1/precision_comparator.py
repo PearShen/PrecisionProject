@@ -21,7 +21,6 @@ class ComparisonResult:
     """Result of precision comparison"""
     operator_name: str
     module_name: str
-    iteration: int
     ops_idx:int
     absolute_error_input: float
     relative_error_input: float
@@ -87,13 +86,13 @@ class PrecisionComparator:
                     reduntant_ops += 1
                     continue
                 test = test_traces[i-reduntant_ops]
-                result = self._compare_single_trace(golden, test)
+                result = self._compare_single_trace(golden, test, golden_path, test_path)
                 results.append(result)
         else:
             for i, (golden, test) in enumerate(zip(golden_traces, test_traces)):
                 if golden["operator_name"] == "varlen_fwd":
                     continue
-                result = self._compare_single_trace(golden, test)
+                result = self._compare_single_trace(golden, test, golden_path, test_path)
                 results.append(result)
         # Calculate summary statistics
         summary = self._calculate_summary(results)
@@ -142,101 +141,41 @@ class PrecisionComparator:
         cosine_sim = torch.nn.functional.cosine_similarity(test_flat.to(torch.float64).view(1,-1),golden_flat.to(torch.float64).view(1,-1))
         return abs_error.item(), rel_error.item(), cosine_sim.item()
 
+    
     def _load_traces(self, path: str) -> List[Dict]:
         """Load traces from HDF5 file"""
         traces = []
-        hdf5_path = os.path.join(path, "operator_traces.h5")
+        operator_info_path = os.path.join(path, "operator_info.json")
 
-        if not os.path.exists(hdf5_path):
-            raise FileNotFoundError(f"Traces file not found: {hdf5_path}")
-
-        with h5py.File(hdf5_path, "r") as f:
-            for key in sorted(f.keys()):
-                if key.startswith("trace_"):
-                    group = f[key]
-                    trace = self._extract_trace_from_group(group)
-                    traces.append(trace)
-
+        if not os.path.exists(operator_info_path):
+            raise FileNotFoundError(f"Traces file not found: {operator_info_path}")
+        with open(operator_info_path, 'r', encoding='utf-8') as file:
+            for line in file.readlines():
+                traces.append(eval(line))
         return traces
 
-    def _extract_trace_from_group(self, group: h5py.Group) -> Dict:
-        """Extract trace data from HDF5 group"""
-        trace = {
-            "iteration": group.attrs["iteration"],
-            "ops_idx": group.attrs["ops_idx"],
-            "module_name": group.attrs["module_name"],
-            "operator_name": group.attrs["operator_name"],
-            "input_shapes": json.loads(group.attrs["input_shapes"]),
-            "output_shapes": json.loads(group.attrs["output_shapes"]),
-            "input_dtypes": json.loads(group.attrs["input_dtypes"]),
-            "output_dtypes": json.loads(group.attrs["output_dtypes"]),
-            "inputs": [],
-            "outputs": []
-        }
-
-        # Load inputs
-        input_keys = [k for k in group.keys() if k.startswith("input_")]
-        for idx, k in enumerate(input_keys):
-            if group[k].shape :
-                trace["inputs"].append(group[k][:])
-            else:
-                trace["inputs"].append(np.array([]))
-
-        # Load outputs
-        output_keys = [k for k in group.keys() if k.startswith("output_")]
-        for idx, k in enumerate(output_keys):
-            if group[k].shape:
-                trace["outputs"].append(group[k][:])
-            else:
-                trace["outputs"].append(np.array([]))
-
-        return trace
-
-    def _compare_single_trace(self, golden: Dict, test: Dict) -> ComparisonResult:
+    def _compare_single_trace(self, golden: Dict, test: Dict, golden_path, test_path) -> ComparisonResult:
         """Compare a single trace between golden and test"""
-        # Basic validation
-        # if golden["iteration"] != test["iteration"]:
-        #     raise ValueError(f"Iteration mismatch: {golden['iteration']} vs {test['iteration']}")
-        # if golden["ops_idx"] != test["ops_idx"]:
-        #     raise ValueError(f"ops_idx mismatch: {golden['ops_idx']} vs {test['ops_idx']}")
-        # if golden["module_name"] != test["module_name"]:
-        #     raise ValueError(f"Layer name mismatch: {golden['module_name']} vs {test['module_name']}")
-        # if golden["operator_name"] != test["operator_name"]:
-        #     raise ValueError(f"Operator name mismatch: {golden['operator_name']} vs {test['operator_name']}")
 
         # Compare inputs if configured
         input_errors = []
-        if self.config.compare_inputs and len(golden["inputs"]) == len(test["inputs"]):
-            for i, (golden_input, test_input) in enumerate(zip(golden["inputs"], test["inputs"])):
-                # skip empty tennsor
-                if not golden_input.shape or golden_input.shape == (0,):
-                    continue
-                # skip non digital tensor
-                if golden_input.dtype.kind in ['U', 'S', 'O']:
-                    continue
+        if self.config.compare_inputs and len(golden["input_shapes"]) == len(test["input_shapes"]):
+            for i in range(len(golden["input_shapes"])):
+                golden_input = np.fromfile(f"{golden_path}/iter{golden['iter']}_ops{golden['ops_idx']}_{golden['module_name']}_input{i}.bin")
+                test_input = np.fromfile(f"{test_path}/iter{golden['iter']}_ops{golden['ops_idx']}_{test['module_name']}_input{i}.bin")
                 abs_err, rel_err, cos_sim = self.compare_tensors(golden_input, test_input, eval(golden["input_dtypes"][i]))
                 input_errors.append((abs_err, rel_err, cos_sim))
 
         # Compare outputs if configured
         output_errors = []
-        if self.config.compare_outputs and len(golden["outputs"]) == len(test["outputs"]):
-            for i, (golden_output, test_output) in enumerate(zip(golden["outputs"], test["outputs"])):
-                # skip empty tennsor
-                if not golden_output.shape or golden_output.shape == (0,):
-                    continue
-                # skip non digital tensor
-                if golden_output.dtype.kind in ['U', 'S', 'O']:
-                    continue
+        if self.config.compare_outputs and len(golden["output_shapes"]) == len(test["output_shapes"]):
+            for i in range(len(golden["output_shapes"])):
+                golden_output = np.fromfile(f"{golden_path}/iter{golden['iter']}_ops{golden['ops_idx']}_{golden['module_name']}_output{i}.bin")
+                test_output = np.fromfile(f"{test_path}/iter{golden['iter']}_ops{golden['ops_idx']}_{test['module_name']}_output{i}.bin")
                 abs_err, rel_err, cos_sim = self.compare_tensors(golden_output, test_output, eval(golden["output_dtypes"][i]))
                 output_errors.append((abs_err, rel_err, cos_sim))
 
         
-        # Calculate input errors
-        # if input_errors:
-        #     abs_error_input = np.mean([err[0] for err in input_errors])
-        #     rel_error_input = np.mean([err[1] for err in input_errors])
-        #     cosine_similarity_input = np.mean([err[2] for err in input_errors])
-        # else:
         abs_error_input = rel_error_input = 0.0
         cosine_similarity_input = 1.0
             
@@ -269,7 +208,6 @@ class PrecisionComparator:
         return ComparisonResult(
             operator_name=golden["operator_name"],
             module_name=golden["module_name"],
-            iteration=golden["iteration"],
             ops_idx=golden["ops_idx"],
             absolute_error_input=abs_error_input,
             relative_error_input=rel_error_input,
@@ -285,8 +223,8 @@ class PrecisionComparator:
             
             passed=passed,
             details={
-                "input_count": len(golden["inputs"]),
-                "output_count": len(golden["outputs"]),
+                "input_count": len(golden["input_shapes"]),
+                "output_count": len(golden["output_shapes"]),
                 "input_errors": input_errors,
                 "output_errors": output_errors
             }
@@ -327,7 +265,7 @@ class PrecisionComparator:
             results_data.append({
                 "operator_name": r.operator_name,
                 "module_name": r.module_name,
-                "iteration": int(r.iteration),
+                # "iteration": int(r.iteration),
                 
                 "absolute_error_input": float(r.absolute_error_input),
                 "relative_error_input": float(r.relative_error_input),

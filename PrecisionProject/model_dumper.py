@@ -47,7 +47,6 @@ class ModelDumper:
         self.ops_count=0
         self.enable_enhanced_capture = enable_enhanced_capture
         self.enable_ops_eff = enable_ops_eff and framework in self.ignore_big_tensor_framework
-        self
         
         
         if self.enable_enhanced_capture:

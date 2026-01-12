@@ -6,6 +6,14 @@ logger = logging.getLogger(__name__)
 
 TC = "TensorCore"
 CC = "ShardCore"
+# cuda
+TCBW = 695.8 * 10**9 #GB/s ->Byte/s
+TCMAC = 37.42 * 2 * 2 * 10**12 # TFLOPS FP8
+
+# jw2e
+Hz = 6 * 10**6 #MHz
+TCBW = 128*Hz #GB/s ->Byte/s
+TCMAC = 8192 * 2 * Hz # TFLOPS FP8
 
 class ModelEfficienyTransformer:
     def __init__(self, model_config=None, quant_type=None,rope_width=64):
@@ -46,23 +54,13 @@ class ModelEfficienyTransformer:
                     
         
         self.rope_width=rope_width
-
-        
-        # cuda
-        self.tcBW = 695.8 * 10**9 #GB/s ->Byte/s
-        self.tcMac = 37.42 * 2 * 2 * 10**12 # TFLOPS FP8
-        
-        # jw2e
-        Hz = 6 * 10**6 #MHz
-        self.tcBW = 128*Hz #GB/s ->Byte/s
-        self.tcMac = 8192 * 2 * Hz # TFLOPS FP8
     
     def get_ops_efficiency(self, OperatorInfo):
         if OperatorInfo.operator_name not in self.ops_map:
             logger.info(f" warning ops: {OperatorInfo.operator_name} not set spec func, used Default_Ops_func")
         func = self.ops_map.get(OperatorInfo.operator_name, self.Default_Ops_func)
         ops_type, computes_ops, memory_byte = func(OperatorInfo)
-        return [ops_type, computes_ops, memory_byte, computes_ops/self.tcMac/OperatorInfo.duration_time, memory_byte/self.tcBW/OperatorInfo.duration_time]
+        return [ops_type, computes_ops, memory_byte, computes_ops/TCMAC/OperatorInfo.duration_time, memory_byte/TCBW/OperatorInfo.duration_time]
         
     def Default_Ops_func(self, OperatorInfo):
         OperatorInfo.duration_time=1*10**(-11)

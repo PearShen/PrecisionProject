@@ -10,7 +10,7 @@ import torch.nn as nn
 from pathlib import Path
 
 # Add src to path
-from PrecisionProject.model_dumper import ModelDumper
+from PrecisionProject.model_dumper_v1 import ModelDumper
 from PrecisionProject.precision_comparator import PrecisionComparator, ComparisonConfig
 
 
@@ -47,7 +47,7 @@ def create_vllm_model_and_input(model_name=None):
 
 def main():
     parser = argparse.ArgumentParser(description="PrecisionProject - Model Precision Testing Framework")
-    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="compare",
+    parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="dump",
                        help="Operation mode: dump (capture traces), compare (precision testing), or demo (run both)")
     parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Qwen3-0.6B-GPTQ-Int4",
                        help="model path")
