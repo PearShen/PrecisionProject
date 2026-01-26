@@ -39,7 +39,7 @@ def create_vllm_model_and_input(model_name=None):
     # model_name = "facebook/opt-125m"
     # model_name = "nickypro/tinyllama-42M-fp32"
     # model_name = "/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4"
-    llm = LLM(model=model_name, enforce_eager=True, gpu_memory_utilization=0.4)
+    llm = LLM(model=model_name, enforce_eager=True, gpu_memory_utilization=0.8)
     
     mock_input = {"prompts": prompts, "params": {"temperature": 0.0, "max_tokens": 2}}
     return llm,mock_input
@@ -49,7 +49,7 @@ def main():
     parser = argparse.ArgumentParser(description="PrecisionProject - Model Precision Testing Framework")
     parser.add_argument("--mode", choices=["dump", "compare", "demo"], default="dump",
                        help="Operation mode: dump (capture traces), compare (precision testing), or demo (run both)")
-    parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Qwen3-0.6B-GPTQ-Int4",
+    parser.add_argument("--model-path", default="/home/shenpeng/workspace/models/Sparse-Llama-3.1-8B-gsm8k-2of4-quantized.w4a16",
                        help="model path")
     parser.add_argument("--framework", choices=["torch", "vllm"], default="vllm",
                        help="Framework to use")
@@ -65,7 +65,7 @@ def main():
                        help="Relative error threshold")
     parser.add_argument("--cosine-threshold", type=float, default=0.99,
                        help="Cosine similarity threshold")
-    parser.add_argument("--dump-golden", type=bool, default=True,
+    parser.add_argument("--dump-golden", type=bool, default=torch.cuda.is_available(),
                        help="dump mode need set dump golden")
 
     args = parser.parse_args()

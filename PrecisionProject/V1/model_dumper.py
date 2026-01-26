@@ -414,15 +414,17 @@ class ModelDumper:
             self.model_efficiency_dump(self.operator_infos, self.model_path, dump_path=self.save_path)
 
 TC = "TensorCore"
-CC = "ShardCore"
-# cuda
-TCBW = 695.8 * 10**9 #GB/s ->Byte/s
-TCMAC = 37.42 * 2 * 2 * 10**12 # TFLOPS FP8
+CC = "ShardCore"   
+if torch.cuda.is_available():
+    # jw2e
+    Hz = 6 * 10**6 #MHz
+    TCBW = 128*Hz #GB/s ->Byte/s
+    TCMAC = 8192 * 2 * Hz # TFLOPS FP8
+else:
+    # cuda
+    TCBW = 695.8 * 10**9 #GB/s ->Byte/s
+    TCMAC = 37.42 * 2 * 2 * 10**12 # TFLOPS FP8
 
-# # jw2e
-# Hz = 6 * 10**6 #MHz
-# TCBW = 128*Hz #GB/s ->Byte/s
-# TCMAC = 8192 * 2 * Hz # TFLOPS FP8
 
 class ModelEfficienyTransformer:
     def __init__(self, model_config=None, quant_type=None,rope_width=64):
@@ -454,8 +456,10 @@ class ModelEfficienyTransformer:
             quantization_config = model_config.get("quantization_config", None)
             if quantization_config:
                 
-                bits = quantization_config['bits']
-                if bits < 8:
+                bits = quantization_config.get('bits', None)
+                if bits is None:
+                    logger.info("not quant dtype !")
+                elif bits < 8:
                     self.quant_pack_size = 8 / bits
                     self.quant_type = f"torch.int8"
                 else:

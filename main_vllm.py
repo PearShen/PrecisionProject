@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 
-def create_vllm_model_and_input(model_name="/home/shenpeng/workspace/models/Qwen3-0.6B-GPTQ-Int4"):
+def create_vllm_model_and_input(model_name="/home/shenpeng/workspace/models/Qwen3-0.6B-Base-Sparse-2of4"):
     """Create a simple test model"""
     from vllm import LLM, SamplingParams 
     os.environ["VLLM_ENABLE_V1_MULTIPROCESSING"] = "0"
@@ -24,9 +24,6 @@ def create_vllm_model_and_input(model_name="/home/shenpeng/workspace/models/Qwen
         "The capital of France is",
         "The future of AI is",
     ]
-    # model_name = "facebook/opt-125m"
-    # model_name = "nickypro/tinyllama-42M-fp32"
-    # model_name = "/home/shenpeng/workspace/models/Qwen3-8B-GPTQ-Int4"
     llm = LLM(model=model_name, enforce_eager=True, gpu_memory_utilization=0.4)
     
     params = {"temperature": 0.0, "max_tokens": 2}

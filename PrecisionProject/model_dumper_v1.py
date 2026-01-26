@@ -120,9 +120,9 @@ class ModelDumper:
                 print("-" * 60)
                 res.append(generated_text)
             return res
-        except:
+        except Exception as e:
             # Fallback for testing: return mock output
-            return ["Generated text response from mock model"]
+            raise e
 
     def model_efficiency_dump(self, layer_data, model_name, dump_path="./"):
         df = pd.DataFrame(layer_data)
