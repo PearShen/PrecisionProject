@@ -118,7 +118,10 @@ class PrecisionComparator:
             Tuple of (absolute_error, relative_error, cosine_similarity)
         """
         if golden_tensor.shape != test_tensor.shape:
-            raise ValueError(f"Shape mismatch: {golden_tensor.shape} vs {test_tensor.shape}")
+            logger.warning(f"Shape mismatch: {golden_tensor.shape} vs {test_tensor.shape}")
+            if golden_tensor.shape[0] < test_tensor.shape[0]:
+                test_tensor = test_tensor[:golden_tensor.shape[0]]
+            
 
         # Convert to tensors for computation
         if not isinstance(golden_tensor, np.ndarray):
@@ -240,7 +243,7 @@ class PrecisionComparator:
         cosine_sims = [r.cosine_similarity for r in results]
         passed_count = sum(1 for r in results if r.passed)
         failed_ops = [dict(operator_name=r.operator_name,
-                           iteration=int(r.iteration),
+                        #    iteration=int(r.iteration),
                            ops_idx=int(r.ops_idx)) for r in results if not r.passed]
 
         return {

@@ -310,6 +310,7 @@ class ModelDumper:
             os.makedirs(path)
         if torch_tensor.ndim >=4:
             np.array([]).tofile(f"{path}/{name}.bin")
+            return
         if torch_tensor.dtype == torch.bfloat16:
             torch_tensor.detach().cpu().view(torch.float16).numpy().tofile(f"{path}/{name}.bin")
         elif torch_tensor.dtype == torch.float8_e4m3fn:
@@ -330,7 +331,7 @@ class ModelDumper:
             data["computes_efficiency"] = computes_efficiency
             data["memory_efficiency"] = memory_efficiency
         with open(filename, 'a', encoding='utf-8') as file:
-            json_str = json.dumps(data, ensure_ascii=False, indent=2)
+            json_str = json.dumps(data, ensure_ascii=False)
             file.write(json_str + '\n')
         self.operator_infos.append(data)
         
